@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clay Group - Cybersecurity & Development</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #0d0d0d;
+            color: #fff;
+            text-align: center;
+        }
+        .hero {
+            padding: 50px;
+            background: linear-gradient(to right, #111, #222);
+            animation: fadeIn 2s;
+        }
+        .animated-text {
+            font-size: 2.5em;
+            animation: glow 1.5s infinite alternate;
+        }
+        .get-started-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #0f0;
+            color: #000;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .get-started-btn:hover {
+            background: #0a0;
+        }
+        .about, .services, .contact {
+            margin: 30px auto;
+            padding: 20px;
+            max-width: 800px;
+            background: #111;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+        }
+        .service-card {
+            padding: 15px;
+            margin: 10px;
+            background: #222;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        .service-card:hover {
+            transform: scale(1.05);
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #0f0; }
+            to { text-shadow: 0 0 20px #0f0; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1 class="animated-text">Welcome to Clay Group</h1>
+        <p>Your trusted partner in Cybersecurity & Web Development</p>
+        <button class="get-started-btn" onclick="location.href='form.html'">Get Started</button>
+    </header><section class="about">
+    <h2>About Us</h2>
+    <p>Clay Group is a leading ethical hacking and cybersecurity firm providing cutting-edge solutions for businesses and individuals. Our expertise includes penetration testing, custom tool development, web security, and advanced hacking strategies.</p>
+</section>
+
+<section class="services">
+    <h2>Our Services</h2>
+    <div class="service-card">Ethical Hacking & Penetration Testing</div>
+    <div class="service-card">Custom Hacking Tools Development</div>
+    <div class="service-card">Web & Mobile App Development</div>
+    <div class="service-card">Cybersecurity Consulting</div>
+    <div class="service-card">Social Media Recovery</div>
+</section>
+
+<section class="contact">
+    <h2>Contact Us</h2>
+    <p>Follow us on Instagram: @h4cker.in | Telegram: @claysecure22</p>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const serviceCards = document.querySelectorAll(".service-card");
+        serviceCards.forEach(card => {
+            card.addEventListener("mouseover", () => {
+                card.style.background = "#0f0";
+                card.style.color = "#000";
+            });
+            card.addEventListener("mouseout", () => {
+                card.style.background = "#222";
+                card.style.color = "#fff";
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
