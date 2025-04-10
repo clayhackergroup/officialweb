@@ -1,70 +1,61 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clay Groups Blogs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clay Groups Blog</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    body { background: #111; color: #fff; font-family: sans-serif; padding: 20px; }
+    h1, h2 { color: #00f7ff; }
+    .blog-post {
+      background: #1c1c1c; margin-bottom: 20px; padding: 20px;
+      border-radius: 10px; box-shadow: 0 0 10px #00f7ff44;
     }
-    body {
-      background: #111;
-      color: #fff;
-      line-height: 1.6;
-      padding: 20px;
+    .blog-post img {
+      max-width: 100%; border-radius: 8px;
     }
-    header {
-      text-align: center;
-      padding: 40px 20px;
-      background: linear-gradient(90deg, #0f0c29, #302b63, #24243e);
-      box-shadow: 0 0 20px #00f7ff44;
-      border-radius: 10px;
-    }
-    header h1 {
-      font-size: 3em;
-      color: #00f7ff;
-      text-shadow: 0 0 10px #00f7ff99;
-    }
-    .blog {
-      margin-top: 40px;
-      background: #1c1c1c;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #00f7ff33;
-    }
-    .blog img {
-      max-width: 100%;
-      border-radius: 10px;
-    }
-    .blog h2 {
-      margin: 20px 0 10px;
-      color: #00f7ff;
-    }
-    .blog p {
-      font-size: 1.1em;
-      color: #ddd;
+    .blog-post p {
+      color: #ddd; margin-top: 10px;
     }
     footer {
       text-align: center;
       margin-top: 60px;
-      font-size: 0.9em;
-      color: #aaa;
+      color: #888;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Clay Groups Blogs</h1>
-    <p>Powerful insights from the mind of Clay</p>
-  </header>  <div class="blog">
+  <h1>Clay Groups Blogs</h1>
+  <p>Powerful insights from the mind of Clay</p>
+
+  <!-- Static Blog Post -->
+  <div class="blog-post">
     <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?fit=crop&w=1050&q=80" alt="Blog Image">
     <h2>Why Cybersecurity is the Future of Tech</h2>
     <p>Cybersecurity is no longer optional. As our digital footprint grows, so do the threats. From social media hijacking to advanced ransomware attacks, the world is facing a new kind of war — a digital one. At Clay Groups, we believe knowledge is the best shield. Stay informed, stay protected, and remember: awareness is your first line of defense.</p>
-  </div>  <footer>
+  </div>
+
+  <!-- Dynamic Blog Posts -->
+  <div id="blog-container"></div>
+
+  <footer>
     &copy; 2025 Clay Groups. All rights reserved.
   </footer>
+
+  <script>
+    const blogs = JSON.parse(localStorage.getItem('blogs') || '[]');
+    const container = document.getElementById('blog-container');
+
+    blogs.reverse().forEach(blog => {
+      const div = document.createElement('div');
+      div.className = 'blog-post';
+      div.innerHTML = `
+        <img src="${blog.image}" alt="Blog Image">
+        <h2>${blog.title}</h2>
+        <p>${blog.content}</p>
+      `;
+      container.appendChild(div);
+    });
+  </script>
 </body>
 </html>
