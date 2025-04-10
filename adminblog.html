@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog Admin</title>
+  <title>Blog Admin Panel</title>
   <style>
     body { background: #111; color: #fff; font-family: sans-serif; padding: 20px; }
     input, textarea, button {
@@ -11,6 +11,17 @@
       background: #222; color: #fff; border: none; border-radius: 5px;
     }
     button { background: #00f7ff; color: #000; font-weight: bold; cursor: pointer; }
+    .blog-list { margin-top: 40px; }
+    .blog-item {
+      background: #1c1c1c; padding: 10px; margin-bottom: 10px;
+      border-radius: 5px; position: relative; box-shadow: 0 0 8px #00f7ff33;
+    }
+    .delete-btn {
+      position: absolute; top: 10px; right: 10px;
+      background: red; color: #fff; border: none;
+      padding: 5px 10px; border-radius: 4px; cursor: pointer;
+    }
+    h2 { margin-top: 40px; color: #00f7ff; }
   </style>
 </head>
 <body>
@@ -20,14 +31,17 @@
   <textarea id="content" rows="6" placeholder="Write your blog..." required></textarea>
   <button onclick="saveBlog()">Submit Blog</button>
 
+  <h2>Existing Blog Posts</h2>
+  <div class="blog-list" id="blog-list"></div>
+
   <script>
     function saveBlog() {
       const title = document.getElementById('title').value;
       const image = document.getElementById('image').value;
       const content = document.getElementById('content').value;
 
-      if (!title || !content || !image) {
-        alert('Please fill all fields');
+      if (!title || !image || !content) {
+        alert('Fill all fields!');
         return;
       }
 
@@ -35,12 +49,39 @@
       let blogs = JSON.parse(localStorage.getItem('blogs') || '[]');
       blogs.push(blog);
       localStorage.setItem('blogs', JSON.stringify(blogs));
-
       alert('Blog saved!');
       document.getElementById('title').value = '';
       document.getElementById('image').value = '';
       document.getElementById('content').value = '';
+      renderBlogList();
     }
+
+    function deleteBlog(index) {
+      let blogs = JSON.parse(localStorage.getItem('blogs') || '[]');
+      blogs.splice(index, 1);
+      localStorage.setItem('blogs', JSON.stringify(blogs));
+      renderBlogList();
+    }
+
+    function renderBlogList() {
+      const container = document.getElementById('blog-list');
+      container.innerHTML = '';
+      let blogs = JSON.parse(localStorage.getItem('blogs') || '[]');
+      blogs.forEach((blog, index) => {
+        const div = document.createElement('div');
+        div.className = 'blog-item';
+        div.innerHTML = `
+          <strong>${blog.title}</strong><br>
+          <small>${blog.image}</small><br>
+          <p>${blog.content.substring(0, 100)}...</p>
+          <button class="delete-btn" onclick="deleteBlog(${index})">Delete</button>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    // Load on start
+    renderBlogList();
   </script>
 </body>
 </html>
