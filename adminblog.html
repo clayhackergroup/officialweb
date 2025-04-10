@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Admin</title>
+  <style>
+    body { background: #111; color: #fff; font-family: sans-serif; padding: 20px; }
+    input, textarea, button {
+      display: block; width: 100%; margin: 10px 0; padding: 10px;
+      background: #222; color: #fff; border: none; border-radius: 5px;
+    }
+    button { background: #00f7ff; color: #000; font-weight: bold; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Add a New Blog Post</h1>
+  <input type="text" id="title" placeholder="Enter Blog Title" required />
+  <input type="text" id="image" placeholder="Image URL" required />
+  <textarea id="content" rows="6" placeholder="Write your blog..." required></textarea>
+  <button onclick="saveBlog()">Submit Blog</button>
+
+  <script>
+    function saveBlog() {
+      const title = document.getElementById('title').value;
+      const image = document.getElementById('image').value;
+      const content = document.getElementById('content').value;
+
+      if (!title || !content || !image) {
+        alert('Please fill all fields');
+        return;
+      }
+
+      const blog = { title, image, content };
+      let blogs = JSON.parse(localStorage.getItem('blogs') || '[]');
+      blogs.push(blog);
+      localStorage.setItem('blogs', JSON.stringify(blogs));
+
+      alert('Blog saved!');
+      document.getElementById('title').value = '';
+      document.getElementById('image').value = '';
+      document.getElementById('content').value = '';
+    }
+  </script>
+</body>
+</html>
