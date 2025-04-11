@@ -1,0 +1,23 @@
+<form name="clayForm" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
+  <!-- Required hidden input for Netlify -->
+  <input type="hidden" name="form-name" value="clayForm">
+  <input type="hidden" name="bot-field"> <!-- spam trap -->
+
+  <input type="text" name="first_name" placeholder="First Name" required>
+  <input type="text" name="last_name" placeholder="Last Name" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <input type="tel" name="phone" placeholder="Phone Number" required>
+
+  <select name="gender" required>
+      <option value="">Select Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+  </select>
+
+  <input type="text" name="country" placeholder="Country" required>
+  <input type="text" name="state" placeholder="State" required>
+  <input type="text" name="city" placeholder="City" required>
+
+  <button type="submit" class="submit-btn">Submit</button>
+</form>
