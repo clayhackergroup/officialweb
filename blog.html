@@ -33,47 +33,54 @@
 <body>
   <h1># Clay Groups Blogs</h1>
   <p><em>Powerful insights from the mind of Clay</em></p>
-  <div id="blogs"></div>
+  
+  <div id="blogs">
+    <div class="blog">
+      <h2>How AI Is Changing Cybersecurity in 2025</h2>
+      <img src="https://source.unsplash.com/800x400/?ai,cybersecurity" alt="Blog image">
+      <p>Artificial intelligence is becoming a major weapon in cybersecurity—both for defenders and attackers. From detecting anomalies to launching automated attacks, AI is shaping the future of ethical hacking.</p>
+    </div>
+
+    <div class="blog">
+      <h2>Top 5 Android Hacking Tools You Should Know</h2>
+      <img src="https://source.unsplash.com/800x400/?android,hacking" alt="Blog image">
+      <p>If you're an Android pentester or hacker, these tools are essential: SmaDump, DroidBox, AndroRAT, MobSF, and NetHunter. Learn what they do and how to use them ethically.</p>
+    </div>
+
+    <div class="blog">
+      <h2>Exploring the Dark Web: Myths vs Reality</h2>
+      <img src="https://source.unsplash.com/800x400/?darkweb,hacking" alt="Blog image">
+      <p>The dark web isn’t just for criminals. It’s also a place where whistleblowers, researchers, and journalists operate. Here's a breakdown of what it really is and how to access it safely.</p>
+    </div>
+
+    <div class="blog">
+      <h2>Best Free Operating Systems for Hackers</h2>
+      <img src="https://source.unsplash.com/800x400/?linux,hacking,os" alt="Blog image">
+      <p>Need an OS for hacking? Try Kali Linux, Parrot OS, BackBox, BlackArch, and Rootless NetHunter. Each comes with pre-installed tools and custom environments for penetration testing.</p>
+    </div>
+
+    <div class="blog">
+      <h2>How VPNs Actually Work (And Why Hackers Use Them)</h2>
+      <img src="https://source.unsplash.com/800x400/?vpn,privacy" alt="Blog image">
+      <p>A VPN hides your IP and encrypts your traffic. Ethical hackers use VPNs to stay anonymous, avoid detection, and bypass restrictions when testing systems or investigating breaches.</p>
+    </div>
+
+    <div class="blog">
+      <h2>Top Programming Languages for Hackers in 2025</h2>
+      <img src="https://source.unsplash.com/800x400/?programming,hacking" alt="Blog image">
+      <p>Python still dominates in ethical hacking, followed by Bash, JavaScript, Go, and C. Learn why these languages matter for reverse engineering, automation, and exploiting vulnerabilities.</p>
+    </div>
+
+    <div class="blog">
+      <h2>Why Bug Bounty Programs Are Exploding in 2025</h2>
+      <img src="https://source.unsplash.com/800x400/?bugbounty,cybersecurity" alt="Blog image">
+      <p>More companies are launching bug bounty programs to reward ethical hackers. Some hackers earn full-time income just by reporting vulnerabilities. Here's how to get started.</p>
+    </div>
+  </div>
+
   <footer style="margin-top: 50px; color: #777;">© 2025 Clay Groups. All rights reserved.</footer>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyAo8v6M81dZ7orsZzVdL2CA6y7rgMn0-wQ",
-      authDomain: "claysbolg.firebaseapp.com",
-      projectId: "claysbolg",
-      storageBucket: "claysbolg.firebasestorage.app",
-      messagingSenderId: "1081812908884",
-      appId: "1:1081812908884:web:5e3322c2d2259461c7a6c1",
-      measurementId: "G-59QRFQMSRB"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    const blogRef = collection(db, "blogs");
-
-    async function loadBlogs() {
-      const snapshot = await getDocs(blogRef);
-      const container = document.getElementById("blogs");
-      snapshot.forEach(doc => {
-        const blog = doc.data();
-        const div = document.createElement("div");
-        div.className = "blog";
-        div.innerHTML = `
-          <h2>${blog.title}</h2>
-          <img src="${blog.image}" alt="Blog image">
-          <p>${blog.content}</p>
-        `;
-        container.appendChild(div);
-      });
-    }
-
-    loadBlogs();
-  </script>
-
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1892737955144820"
-     crossorigin="anonymous"></script>
+  <!-- AdSense Script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1892737955144820" crossorigin="anonymous"></script>
 </body>
 </html>
