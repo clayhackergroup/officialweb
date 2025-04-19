@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy & Policy - Clay Group</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0e0e0e;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to right, #111, #222);
+      padding: 30px 20px;
+      text-align: center;
+      animation: fadeInDown 1s ease;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      color: #0f0;
+      text-shadow: 0 0 10px #0f0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #111;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+      animation: fadeIn 2s ease;
+    }
+
+    h2 {
+      color: #0f0;
+      margin-top: 20px;
+    }
+
+    p {
+      color: #ccc;
+      font-size: 1.05em;
+    }
+
+    .section {
+      margin-bottom: 25px;
+    }
+
+    .toggle-btn {
+      background: #0f0;
+      color: #000;
+      padding: 10px 20px;
+      border: none;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 15px;
+      transition: background 0.3s;
+    }
+
+    .toggle-btn:hover {
+      background: #0a0;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media screen and (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+    }
+  </style>
+
+  <!-- Google AdSense Script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1892737955144820"
+    crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header>
+  <h1>Privacy & Policies</h1>
+</header>
+
+<div class="container">
+  <button class="toggle-btn" onclick="toggleSection('dataUsage')">Toggle Data Usage</button>
+  <div id="dataUsage" class="section">
+    <h2>1. Data Collection & Usage</h2>
+    <p>We collect only essential data to provide our services, including contact details and submitted forms. No sensitive data is stored or shared without your permission.</p>
+  </div>
+
+  <button class="toggle-btn" onclick="toggleSection('cookies')">Toggle Cookies</button>
+  <div id="cookies" class="section">
+    <h2>2. Cookies</h2>
+    <p>We may use cookies to improve user experience, but we do not track or sell your personal data to third parties. You can disable cookies anytime from your browser.</p>
+  </div>
+
+  <button class="toggle-btn" onclick="toggleSection('security')">Toggle Security</button>
+  <div id="security" class="section">
+    <h2>3. Security</h2>
+    <p>Your data security is our top priority. We implement strong security protocols and ethical practices to protect your information against unauthorized access.</p>
+  </div>
+
+  <button class="toggle-btn" onclick="toggleSection('thirdparty')">Toggle Third Party Access</button>
+  <div id="thirdparty" class="section">
+    <h2>4. Third Party Access</h2>
+    <p>We do not share any user data with third parties, except when required by law or with your explicit consent for service enhancement.</p>
+  </div>
+</div>
+
+<script>
+  function toggleSection(id) {
+    const el = document.getElementById(id);
+    el.classList.toggle("hidden");
+  }
+</script>
+
+</body>
+</html>
