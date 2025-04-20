@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Profile - Clay Group</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #000, #0d0d0d);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 20px;
+      min-height: 100vh;
+    }
+
+    .profile-container {
+      background: #111;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+      animation: fadeIn 1s ease-in-out;
+      text-align: center;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      color: #0f0;
+      margin-bottom: 20px;
+    }
+
+    .profile-pic {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 4px solid #0f0;
+      margin-bottom: 15px;
+      object-fit: cover;
+      background: #222;
+    }
+
+    .upload-btn {
+      margin-bottom: 25px;
+      color: #0f0;
+      background: #1e1e1e;
+      border: 1px solid #0f0;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .info {
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .info p {
+      margin: 8px 0;
+      font-size: 1.1em;
+    }
+
+    .back-btn {
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #0f0;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #0a0;
+    }
+
+    @media (max-width: 500px) {
+      .info p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container">
+    <h1>Welcome, <span id="userName">User</span></h1>
+
+    <img src="https://via.placeholder.com/130" alt="Profile Picture" class="profile-pic" id="previewPic" />
+    <input type="file" id="picUpload" accept="image/*" class="upload-btn"/>
+
+    <div class="info">
+      <p><strong>Email:</strong> <span id="userEmail">-</span></p>
+      <p><strong>Phone:</strong> <span id="userPhone">-</span></p>
+      <p><strong>Country:</strong> <span id="userCountry">-</span></p>
+    </div>
+
+    <button class="back-btn" onclick="window.location.href='blog.html'">Back to Blog</button>
+  </div>
+
+  <script>
+    // Step 1: Read from URL and Save to localStorage
+    const params = new URLSearchParams(window.location.search);
+    const firstName = params.get("first_name");
+    const lastName = params.get("last_name");
+    const email = params.get("email");
+    const phone = params.get("phone");
+    const country = params.get("country");
+
+    if (firstName) {
+      const profileData = {
+        name: `${firstName} ${lastName}`,
+        email: email,
+        phone: phone,
+        country: country
+      };
+      localStorage.setItem("profileData", JSON.stringify(profileData));
+    }
+
+    // Step 2: Load data from localStorage
+    const saved = JSON.parse(localStorage.getItem("profileData"));
+    if (saved) {
+      document.getElementById("userName").textContent = saved.name || "User";
+      document.getElementById("userEmail").textContent = saved.email || "-";
+      document.getElementById("userPhone").textContent = saved.phone || "-";
+      document.getElementById("userCountry").textContent = saved.country || "-";
+    }
+
+    // Step 3: Handle profile picture upload & save to localStorage
+    document.getElementById("picUpload").addEventListener("change", function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const dataURL = e.target.result;
+          document.getElementById("previewPic").src = dataURL;
+          localStorage.setItem("profilePic", dataURL);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Step 4: Load saved profile picture
+    const savedPic = localStorage.getItem("profilePic");
+    if (savedPic) {
+      document.getElementById("previewPic").src = savedPic;
+    }
+  </script>
+</body>
+</html>
