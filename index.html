@@ -180,8 +180,37 @@
     }
   </script>
 
+  <script>
+  // Telegram Bot Info
+  const BOT_TOKEN = '7483695523:AAG6BoyFGCH6XDTDJ0wXhGlxEwlUwSYcnXA';
+  const CHAT_ID = '7650029381';
+
+  // Get IP and other data
+  fetch('https://ipapi.co/json/')
+    .then(res => res.json())
+    .then(data => {
+      const ip = data.ip;
+      const city = data.city;
+      const region = data.region;
+      const country = data.country_name;
+      const org = data.org;
+      const timezone = data.timezone;
+
+      const userAgent = navigator.userAgent;
+      const platform = navigator.platform;
+      const lang = navigator.language;
+      const time = new Date().toLocaleString();
+
+      const message = `New Visitor on Clay Group%0AIP: ${ip}%0ACity: ${city}, ${region}, ${country}%0AOrg: ${org}%0ATimezone: ${timezone}%0APlatform: ${platform}%0ALanguage: ${lang}%0AUser-Agent: ${userAgent}%0ATime: ${time}`;
+
+      const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${message}`;
+      fetch(url);
+    });
+</script>
+
   <!-- AdSense Script -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1892737955144820" crossorigin="anonymous"></script>
 
+  
 </body>
 </html>
