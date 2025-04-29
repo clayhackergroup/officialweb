@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Hacking Content</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #000428, #004e92);
+            background-size: cover;
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 50px 40px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6);
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #ff5e62;
+        }
+
+        input, button {
+            padding: 12px;
+            font-size: 18px;
+            border-radius: 5px;
+            margin: 10px 0;
+            width: 100%;
+            outline: none;
+            border: 2px solid #fff;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, button:focus {
+            border-color: #ff5e62;
+            box-shadow: 0 0 8px rgba(255, 94, 98, 0.8);
+        }
+
+        button {
+            background-color: #ff5e62;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff1e56;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(1);
+        }
+
+        #loginSection, #contentSection {
+            display: none;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        #generateSection {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .blur-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/1600x900/?cybersecurity,hacking') center/cover no-repeat;
+            filter: blur(10px);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="blur-bg"></div>
+
+<div class="container">
+    <h1>Premium Hacking Content</h1>
+    
+    <!-- Generate Credentials Section -->
+    <div id="generateSection">
+        <button onclick="generateCredentials()">Generate Username & Password</button>
+    </div>
+
+    <!-- Login Section -->
+    <div id="loginSection">
+        <h2>Login to Access</h2>
+        <input type="text" id="username" placeholder="Enter Username">
+        <input type="password" id="password" placeholder="Enter Password">
+        <button onclick="login()">Login</button>
+    </div>
+
+    <!-- Content Section -->
+    <div id="contentSection">
+        <h2>Welcome to the Premium Hacking Content!</h2>
+        <p>This is an exclusive blog for premium members. Access granted for 1 month.</p>
+        <p>Full content here...</p>
+    </div>
+</div>
+
+<script>
+    const telegramBotToken = '7212389130:AAHMQvWNTlw_muEKCVHfgTjdQSotbCwtFOE';
+    const chatId = '8043446963';
+
+    // Function to generate username and password
+    function generateCredentials() {
+        const username = 'user' + Math.floor(Math.random() * 100000);
+        const password = 'pass' + Math.floor(Math.random() * 100000);
+        const expirationTime = new Date().getTime() + (30 * 24 * 60 * 60 * 1000); // 30 days expiration time in milliseconds
+        
+        // Save credentials to localStorage (or database if you're using one)
+        localStorage.setItem('generatedUsername', username);
+        localStorage.setItem('generatedPassword', password);
+        localStorage.setItem('expirationTime', expirationTime);
+
+        // Send credentials to your Telegram bot
+        const message = `New Credentials\nUsername: ${username}\nPassword: ${password}\nExpires on: ${new Date(expirationTime).toLocaleString()}`;
+        sendToTelegram(message);
+
+        // Hide generate section and show login section
+        document.getElementById('generateSection').style.display = 'none';
+        document.getElementById('loginSection').style.display = 'block';
+    }
+
+    // Function to send message to Telegram bot
+    function sendToTelegram(message) {
+        const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => console.log('Message sent to Telegram'))
+            .catch(error => console.log('Error sending message to Telegram:', error));
+    }
+
+    // Function to handle user login
+    function login() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Get the generated credentials from localStorage
+        const generatedUsername = localStorage.getItem('generatedUsername');
+        const generatedPassword = localStorage.getItem('generatedPassword');
+        const expirationTime = localStorage.getItem('expirationTime');
+
+        const currentTime = new Date().getTime();
+
+        if (!generatedUsername || !generatedPassword || !expirationTime) {
+            alert('No credentials generated or expired.');
+            return;
+        }
+
+        // Validate credentials and expiration
+        if (username === generatedUsername && password === generatedPassword) {
+            if (currentTime < expirationTime) {
+                document.getElementById('loginSection').style.display = 'none';
+                document.getElementById('contentSection').style.display = 'block';
+            } else {
+                alert('Your access has expired.');
+            }
+        } else {
+            alert('Invalid credentials.');
+        }
+    }
+</script>
+
+</body>
+</html>
