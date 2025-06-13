@@ -1,5 +1,0 @@
-requests
-beautifulsoup4
-argparse; python_version >= "3.2"
-pyfiglet
-termcolor
