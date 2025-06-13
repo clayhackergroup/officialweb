@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Onion-Find | Clay Hacker Group</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Onion-Find is a dark web reconnaissance tool by Clay Hacker Group.">
+  <meta name="keywords" content="onion recon, dark web tools, ethical hacking, Clay Hacker Group, Onion-Find">
+  <meta name="author" content="Clay Hacker Group">
+  <link rel="canonical" href="https://claytechgroup.netlify.app/onion-find.html">
+
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: #0d0d0d;
+      color: #eee;
+      padding: 30px;
+      animation: fadeIn 1.2s ease;
+    }
+
+    h1 {
+      color: #00ffcc;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .tool-meta {
+      font-size: 0.95rem;
+      color: #aaa;
+      margin-bottom: 30px;
+    }
+
+    .tool-section {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #333;
+      margin-bottom: 40px;
+    }
+
+    .code-box {
+      background: #111;
+      padding: 15px;
+      border-radius: 8px;
+      font-family: monospace;
+      color: #0f0;
+      margin-top: 10px;
+      position: relative;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #00ffcc;
+      color: #000;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+
+    .copy-btn:hover {
+      background: #00ccaa;
+    }
+
+    footer {
+      text-align: center;
+      color: #666;
+      margin-top: 60px;
+      font-size: 0.85rem;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧅 Onion-Find</h1>
+  <div class="tool-meta">
+    <p><strong>Tool By:</strong> Clay Hacker Group</p>
+    <p><strong>Release Date:</strong> June 13, 2025</p>
+  </div>
+
+  <div class="tool-section">
+    <h2>About This Tool</h2>
+    <p>Onion-Find is a lightweight reconnaissance tool for discovering and analyzing .onion (Tor hidden) services. It uses custom scraping techniques, fingerprinting, and metadata scanning to provide ethical researchers insight into dark web infrastructure.</p>
+  </div>
+
+  <div class="tool-section">
+    <h2>Installation</h2>
+    <div class="code-box" id="codeBox">
+      <button class="copy-btn" onclick="copyCode()">Copy</button>
+<pre><code>mkdir onion-find 
+       cd onion-find
+       curl -O https://claytechgroup.netlify.app/tools/onion-find/search.Py
+       curl -O https://claytechgroup.netlify.app/tools/onion-find/requirements.text
+       python3 -m pip install -r requirements.txt
+       python3 search.py -h
+</code></pre>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Clay Hacker Group – For Educational Purposes Only
+  </footer>
+
+  <script>
+    function copyCode() {
+      const text = document.querySelector('#codeBox pre code').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy', 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>
