@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Site-Find | Clay Hacker Group</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Site-Find — Advanced passive reconnaissance tool for ethical hacking, bug bounty, and security analysis.">
+  <meta name="keywords" content="site recon, surface web tools, bug bounty tools, ethical hacking, Clay Hacker Group, Site-Find, web fingerprinting, OSINT">
+  <meta name="author" content="Clay Hacker Group">
+  <link rel="canonical" href="https://claytechgroup.netlify.app/site-find.html">
+
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: #0d0d0d;
+      color: #eee;
+      padding: 30px;
+      animation: fadeIn 1.2s ease;
+    }
+
+    h1 {
+      color: #00ffcc;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .tool-meta {
+      font-size: 0.95rem;
+      color: #aaa;
+      margin-bottom: 30px;
+    }
+
+    .tool-section {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #333;
+      margin-bottom: 40px;
+    }
+
+    .tool-section h2 {
+      color: #00ffcc;
+      margin-bottom: 10px;
+    }
+
+    .tool-section ul {
+      padding-left: 20px;
+      line-height: 1.8;
+    }
+
+    .tool-section ul li {
+      list-style-type: "✅ ";
+      margin-bottom: 8px;
+    }
+
+    .code-box {
+      background: #111;
+      padding: 15px;
+      border-radius: 8px;
+      font-family: monospace;
+      color: #0f0;
+      margin-top: 10px;
+      position: relative;
+      overflow-x: auto;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #00ffcc;
+      color: #000;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+
+    .copy-btn:hover {
+      background: #00ccaa;
+    }
+
+    footer {
+      text-align: center;
+      color: #666;
+      margin-top: 60px;
+      font-size: 0.85rem;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌐 Site-Find</h1>
+  <div class="tool-meta">
+    <p><strong>Tool By:</strong> Clay Hacker Group</p>
+    <p><strong>Release Date:</strong> June 13, 2025</p>
+  </div>
+
+  <div class="tool-section">
+    <h2>About This Tool</h2>
+    <p><strong>🌐 Site-Find — Advanced Website Scanner</strong></p>
+    <p><strong>Author:</strong> You<br>
+       <strong>Language:</strong> Python 3<br>
+       <strong>Purpose:</strong> Passive web reconnaissance and fingerprinting tool for ethical hacking, bug bounty, and security assessments.</p>
+
+    <h2>🚀 Features</h2>
+    <ul>
+      <li>Banner & UI with colorful output</li>
+      <li>WHOIS Lookup (Registrar, Domain Dates, Name Servers)</li>
+      <li>Server IP Resolution</li>
+      <li>HTTP Headers Fetching</li>
+      <li>Page Info (Title, Status, Size)</li>
+      <li>Internal Link Extraction</li>
+      <li>Email & Phone Number Extraction</li>
+      <li>Tech Stack Fingerprinting (Server, X-Powered-By, CMS Generator)</li>
+      <li>Favicon Hashing (MD5 fingerprinting)</li>
+      <li>HTML Page Dumping (save full page source)</li>
+    </ul>
+  </div>
+
+  <div class="tool-section">
+    <h2>installation</h2>
+    <div class="code-box" id="codeBox">
+      <button class="copy-btn" onclick="copyCode()">Copy</button>
+<pre><code>mkdir site-find
+           cd site-find
+           curl -O https://clayhackergroup.netlify.app/tools/site-find/search.py
+           curl -O https://clayhackergroup.netlify.app/tools/site-find/requirements.txt
+           python3 -m venv venv
+           source venv/bin/active
+           python3 -m pip install -r  requirements.txt
+           python3 search.py -h
+</code></pre>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Clay Hacker Group – For Educational Purposes Only
+  </footer>
+
+  <script>
+    function copyCode() {
+      const text = document.querySelector('#codeBox pre code').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy', 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>
