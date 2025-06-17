@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - Clay Hacker Group</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #0f0;
+    }
+    form {
+      max-width: 600px;
+      margin: auto;
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #0f0;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      background: #222;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #0f0;
+      color: #000;
+      padding: 12px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #0a0;
+    }
+  </style>
+</head>
+<body oncontextmenu="return false" onkeydown="return blockKeys(event)" onmousedown="return blockMouse(event)">
+
+  <h1>Contact Clay Hacker Group</h1>
+  <form id="contactForm">
+    <label>First Name *</label>
+    <input type="text" id="firstName" required />
+
+    <label>Last Name *</label>
+    <input type="text" id="lastName" required />
+
+    <label>Email *</label>
+    <input type="email" id="email" required />
+
+    <label>Phone (Optional)</label>
+    <input type="text" id="phone" />
+
+    <label>Subject *</label>
+    <input type="text" id="subject" required />
+
+    <label>Message *</label>
+    <textarea id="message" rows="5" required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+
+  <script>
+    // Telegram Bot
+    const BOT_TOKEN = "8110042599:AAFcTlqE7U7Sfi0iKcNNPTnejxO7O_-xGAE";
+    const CHAT_ID = "8043446963";
+
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const first = document.getElementById("firstName").value;
+      const last = document.getElementById("lastName").value;
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value || "Not provided";
+      const subject = document.getElementById("subject").value;
+      const msg = document.getElementById("message").value;
+
+      const text = `📥 New Contact Form Message:\n\n👤 Name: ${first} ${last}\n✉️ Email: ${email}\n📱 Phone: ${phone}\n📌 Subject: ${subject}\n💬 Message: ${msg}`;
+
+      const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(text)}`;
+      
+      fetch(url).then(() => {
+        alert("Message sent successfully!");
+        history.back(); // Redirect back
+      });
+    });
+
+    // Basic anti-inspect measures (not foolproof)
+    function blockKeys(e) {
+      if (e.ctrlKey && ['u','U','s','S','c','C'].includes(e.key)) return false;
+      if (e.keyCode === 123) return false; // F12
+    }
+
+    function blockMouse(e) {
+      if (e.button === 2) return false; // Right-click
+    }
+
+    // Block dev tools on resize trick (optional)
+    setInterval(() => {
+      if (window.outerHeight - window.innerHeight > 100) {
+        document.body.innerHTML = "<h2 style='color:red;text-align:center;'>Developer tools detected. Page disabled.</h2>";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
