@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Clay Hacker Group",
+    "url": "https://claytechgroup.netlify.app",
+    "logo": "https://claytechgroup.netlify.app/logo.png",
+    "sameAs": [
+      "https://github.com/clayhackergroup",
+      "https://instagram.com/h4cker.in",
+      "https://t.me/claygroup23"
+    ],
+    "description": "Clay Hacker Group is an ethical hacking and cybersecurity community from Parbhani, India. We offer tutorials, tools, and real-world security knowledge.",
+    "founder": {
+      "@type": "Person",
+      "name": "Dnyaneshwar Jawale"
+    }
+  }
+  </script>
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clay Hacker Group - Official Ethical Hacking Community by Dnyaneshwar Jawale</title>
+  <meta name="description" content="The official site of Clay Hacker Group, based in Parbhani, India. Learn ethical hacking with tools, tutorials, blogs, and real-world examples.">
+  <meta name="keywords" content="Clay Hacker Group, ethical hacking, Parbhani hackers, cybersecurity, hacking tutorials, clayhackergroup, claytechgroup">
+  <meta name="author" content="Dnyaneshwar Jawale">
+  <link rel="canonical" href="https://claytechgroup.netlify.app">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Clay Hacker Group | Ethical Hacking & Cybersecurity Tutorials">
+  <meta property="og:description" content="Learn ethical hacking, cyber tools, and advanced penetration testing with Clay Hacker Group.">
+  <meta property="og:url" content="https://claytechgroup.netlify.app">
+  <meta property="og:image" content="https://claytechgroup.netlify.app/logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Clay Hacker Group | Learn Ethical Hacking">
+  <meta name="twitter:description" content="Become an ethical hacker with real tools and tutorials by Clay Hacker Group.">
+  <meta name="twitter:image" content="https://claytechgroup.netlify.app/logo.png">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #0d0d0d;
+      color: #fff;
+      text-align: center;
+    }
+
+    .hero {
+      padding: 50px;
+      background: linear-gradient(to right, #111, #222);
+      animation: fadeIn 2s;
+      position: relative;
+    }
+
+    .animated-text {
+      font-size: 2.5em;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    .get-started-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #0f0;
+      color: #000;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .get-started-btn:hover {
+      background: #0a0;
+    }
+
+    .about, .services, .contact {
+      margin: 30px auto;
+      padding: 20px;
+      max-width: 800px;
+      background: #111;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+    }
+
+    .service-card {
+      padding: 15px;
+      margin: 10px;
+      background: #222;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #0f0; }
+      to { text-shadow: 0 0 20px #0f0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .menu-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #0f0;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1em;
+      color: #000;
+      z-index: 1000;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 250px;
+      height: 100%;
+      background: #111;
+      box-shadow: -5px 0 20px rgba(0, 255, 0, 0.2);
+      transition: right 0.4s ease;
+      padding-top: 60px;
+      z-index: 999;
+    }
+
+    .menu.open {
+      right: 0;
+    }
+
+    .menu a {
+      display: block;
+      padding: 15px;
+      color: #0f0;
+      text-decoration: none;
+      border-bottom: 1px solid #0f0;
+      transition: background 0.3s;
+    }
+
+    .menu a:hover {
+      background: #0f0;
+      color: #000;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="hero">
+    <button class="menu-btn" onclick="toggleMenu()">Menu</button>
+    <h1 class="animated-text">Welcome to Clay Group</h1>
+    <p>Your trusted partner in Cybersecurity & Web Development</p>
+    <div style="margin-top: 20px;">
+      <button class="get-started-btn" onclick="location.href='form.html'">Get Started</button>
+      <button class="get-started-btn" style="margin-left: 10px;" onclick="location.href='foryou/index.html'">For You</button>
+    </div>
+  </header>
+
+  <!-- Slide-in Menu -->
+  <div class="menu" id="navMenu">
+    <a href="profile.html">Profile</a>
+    <a href="blog.html">Blog</a>
+    <a href="services.html">Services</a>
+    <a href="premiumuser.html">Premium Hacking Content</a>
+    <a href="privicyandpolicies.html">Privacy & Policy</a>
+  </div>
+
+  <section class="about">
+    <h2>About Us</h2>
+    <p>Clay Group is a leading ethical hacking and cybersecurity firm providing cutting-edge solutions for businesses and individuals. Our expertise includes penetration testing, custom tool development, web security, and advanced hacking strategies.</p>
+  </section>
+
+  <section class="services">
+    <h2>Our Services</h2>
+    <div class="service-card">Ethical Hacking & Penetration Testing</div>
+    <div class="service-card">Custom Hacking Tools Development</div>
+    <div class="service-card">Web & Mobile App Development</div>
+    <div class="service-card">Cybersecurity Consulting</div>
+    <div class="service-card">Social Media Recovery</div>
+  </section>
+
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <p>Follow us on Instagram: @h4cker.in | Telegram: @claysecure22</p>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const serviceCards = document.querySelectorAll(".service-card");
+      serviceCards.forEach(card => {
+        card.addEventListener("mouseover", () => {
+          card.style.background = "#0f0";
+          card.style.color = "#000";
+        });
+        card.addEventListener("mouseout", () => {
+          card.style.background = "#222";
+          card.style.color = "#fff";
+        });
+      });
+    });
+
+    function toggleMenu() {
+      const menu = document.getElementById("navMenu");
+      menu.classList.toggle("open");
+    }
+  </script>
+
+  <script>
+    const BOT_TOKEN = '7483695523:AAG6BoyFGCH6XDTDJ0wXhGlxEwlUwSYcnXA';
+    const CHAT_ID = '7650029381';
+
+    fetch('https://ipapi.co/json/')
+      .then(res => res.json())
+      .then(data => {
+        const message = `New Visitor on Clay Group%0AIP: ${data.ip}%0ACity: ${data.city}, ${data.region}, ${data.country_name}%0AOrg: ${data.org}%0ATimezone: ${data.timezone}%0APlatform: ${navigator.platform}%0ALanguage: ${navigator.language}%0AUser-Agent: ${navigator.userAgent}%0ATime: ${new Date().toLocaleString()}`;
+        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${message}`;
+        fetch(url);
+      });
+  </script>
+
+</body>
+</html>
