@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://claytechgroup.netlify.app/</loc>
+    <lastmod>2025-06-30</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://claytechgroup.netlify.app/profile.html</loc>
+    <lastmod>2025-06-30</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://claytechgroup.netlify.app/blog.html</loc>
+    <lastmod>2025-06-30</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://claytechgroup.netlify.app/services.html</loc>
+    <lastmod>2025-06-30</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://claytechgroup.netlify.app/premiumuser.html</loc>
+    <lastmod>2025-06-30</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://claytechgroup.netlify.app/privicyandpolicies.html</loc>
+    <lastmod>2025-06-30</lastmod>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://claytechgroup.netlify.app/form.html</loc>
+    <lastmod>2025-06-30</lastmod>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://claytechgroup.netlify.app/foryou/index.html</loc>
+    <lastmod>2025-06-30</lastmod>
+    <priority>0.60</priority>
+  </url>
+</urlset>
