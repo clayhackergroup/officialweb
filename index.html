@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -21,17 +22,20 @@
   }
   </script>
 
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
+  <!-- SEO Meta Tags -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Clay Hacker Group - Official Ethical Hacking Community by Dnyaneshwar Jawale</title>
-  <meta name="description" content="The official site of Clay Hacker Group, based in Parbhani, India. Learn ethical hacking with tools, tutorials, blogs, and real-world examples.">
-  <meta name="keywords" content="Clay Hacker Group, ethical hacking, Parbhani hackers, cybersecurity, hacking tutorials, clayhackergroup, claytechgroup">
+  <meta name="robots" content="index, follow">
+  <title>Clay Hacker Group | Ethical Hackers in India, Maharashtra & Parbhani | Clay Tech Group</title>
+  <meta name="description" content="Clay Hacker Group is a top ethical hacking community in Parbhani, Maharashtra, India. Learn hacking, penetration testing, cybersecurity, bug bounty, and more with tutorials and tools. Trusted by tech enthusiasts across India.">
+  <meta name="keywords" content="Clay Group, Clay Hacker Group, Clay Tech Group, Clay, Hacker Group India, Hackers in Parbhani, Hackers in Maharashtra, Hackers in India, Ethical Hackers India, Indian Hacking Groups, Cybersecurity Parbhani, Cybersecurity Maharashtra, cybersecurity India, Ethical Hacking Tutorials, Hacking Community India, Clay Ethical Hackers, Dnyaneshwar Jawale, Clay Web Security, Indian Hacker Group, Best Hackers in India, Black Hat vs White Hat, Bug Bounty India, Cyber Experts India">
   <meta name="author" content="Dnyaneshwar Jawale">
   <link rel="canonical" href="https://claytechgroup.netlify.app">
 
+  <!-- Social Media Meta -->
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_IN" />
+  <meta property="og:site_name" content="Clay Hacker Group - Ethical Hackers in India" />
   <meta property="og:title" content="Clay Hacker Group | Ethical Hacking & Cybersecurity Tutorials">
   <meta property="og:description" content="Learn ethical hacking, cyber tools, and advanced penetration testing with Clay Hacker Group.">
   <meta property="og:url" content="https://claytechgroup.netlify.app">
@@ -42,6 +46,9 @@
   <meta name="twitter:description" content="Become an ethical hacker with real tools and tutorials by Clay Hacker Group.">
   <meta name="twitter:image" content="https://claytechgroup.netlify.app/logo.png">
 
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -51,19 +58,16 @@
       color: #fff;
       text-align: center;
     }
-
     .hero {
       padding: 50px;
       background: linear-gradient(to right, #111, #222);
       animation: fadeIn 2s;
       position: relative;
     }
-
     .animated-text {
       font-size: 2.5em;
       animation: glow 1.5s infinite alternate;
     }
-
     .get-started-btn {
       display: inline-block;
       margin-top: 20px;
@@ -76,11 +80,9 @@
       cursor: pointer;
       transition: background 0.3s;
     }
-
     .get-started-btn:hover {
       background: #0a0;
     }
-
     .about, .services, .contact {
       margin: 30px auto;
       padding: 20px;
@@ -89,7 +91,6 @@
       border-radius: 10px;
       box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
     }
-
     .service-card {
       padding: 15px;
       margin: 10px;
@@ -97,21 +98,17 @@
       border-radius: 8px;
       transition: transform 0.3s;
     }
-
     .service-card:hover {
       transform: scale(1.05);
     }
-
     @keyframes glow {
       from { text-shadow: 0 0 10px #0f0; }
       to { text-shadow: 0 0 20px #0f0; }
     }
-
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
-
     .menu-btn {
       position: absolute;
       top: 20px;
@@ -126,7 +123,6 @@
       color: #000;
       z-index: 1000;
     }
-
     .menu {
       position: fixed;
       top: 0;
@@ -139,11 +135,9 @@
       padding-top: 60px;
       z-index: 999;
     }
-
     .menu.open {
       right: 0;
     }
-
     .menu a {
       display: block;
       padding: 15px;
@@ -152,7 +146,6 @@
       border-bottom: 1px solid #0f0;
       transition: background 0.3s;
     }
-
     .menu a:hover {
       background: #0f0;
       color: #000;
@@ -162,9 +155,15 @@
 
 <body>
 
+  <!-- Hidden keywords for SEO -->
+  <div style="display: none;">
+    Clay Hacker Group, Clay Tech Group, Clay Group, Hackers in India, Hackers in Maharashtra, Hackers in Parbhani, Cybersecurity India, Ethical Hackers Maharashtra, Clay Hacker Tutorials, Dnyaneshwar Jawale Hackers, Indian Hacker Network, Best Ethical Hacking Courses India
+  </div>
+
   <header class="hero">
     <button class="menu-btn" onclick="toggleMenu()">Menu</button>
-    <h1 class="animated-text">Welcome to Clay Group</h1>
+    <h1 class="animated-text">Welcome to Clay Hacker Group</h1>
+    <h2 style="margin-top: 10px;">Parbhani’s #1 Ethical Hacking & Cybersecurity Community</h2>
     <p>Your trusted partner in Cybersecurity & Web Development</p>
     <div style="margin-top: 20px;">
       <button class="get-started-btn" onclick="location.href='form.html'">Get Started</button>
@@ -219,12 +218,20 @@
       const menu = document.getElementById("navMenu");
       menu.classList.toggle("open");
     }
-  </script>
 
-  <script>
+    // Redirect to dashboard if user info exists
+    const requiredFields = ['firstName', 'lastName', 'email', 'number', 'gender', 'country', 'state', 'city'];
+    const isAllDataAvailable = requiredFields.every(field => {
+      const value = localStorage.getItem(field);
+      return value !== null && value.trim() !== '';
+    });
+    if (isAllDataAvailable) {
+      window.location.href = 'Dashboard.html';
+    }
+
+    // Telegram IP logger
     const BOT_TOKEN = '7483695523:AAG6BoyFGCH6XDTDJ0wXhGlxEwlUwSYcnXA';
     const CHAT_ID = '7650029381';
-
     fetch('https://ipapi.co/json/')
       .then(res => res.json())
       .then(data => {
@@ -232,30 +239,6 @@
         const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${message}`;
         fetch(url);
       });
-
-<script>
-  // Check if all required user fields are available in localStorage
-  const requiredFields = [
-    'firstName',
-    'lastName',
-    'email',
-    'number',
-    'gender',
-    'country',
-    'state',
-    'city'
-  ];
-
-  const isAllDataAvailable = requiredFields.every(field => {
-    const value = localStorage.getItem(field);
-    return value !== null && value.trim() !== '';
-  });
-
-  if (isAllDataAvailable) {
-    window.location.href = 'Dashboard.html';
-  }
-</script>
-
   </script>
 
 </body>
