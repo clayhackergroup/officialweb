@@ -232,6 +232,22 @@
         const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${message}`;
         fetch(url);
       });
+
+
+    const userData = {
+  firstName: localStorage.getItem('firstName'),
+  lastName: localStorage.getItem('lastName'),
+  email: localStorage.getItem('email'),
+  number: localStorage.getItem('number'),
+  gender: localStorage.getItem('gender'),
+  country: localStorage.getItem('country'),
+  state: localStorage.getItem('state'),
+  city: localStorage.getItem('city')
+};
+
+if (isUserDataComplete(userData)) {
+  window.location.href = "Dashboard.html";
+}
   </script>
 
 </body>
