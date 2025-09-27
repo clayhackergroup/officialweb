@@ -1,0 +1,219 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Clay — Telegram Bot Development Services</title>
+  <meta name="description" content="Professional Telegram bot development, hosting, pricing, security and developer team info." />
+  <style>
+    :root {
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#2dd4bf;
+      --glass:rgba(255,255,255,0.04);
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html, body { width:100%; height:100%; overflow-x:hidden; }
+    body {
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg,var(--bg) 0%, #071024 100%);
+      color:#e6eef8;
+      line-height:1.6;
+      text-align:center;
+      scroll-behavior:smooth;
+    }
+    a { color:var(--accent); text-decoration:none; transition:color .3s; }
+    a:hover { color:#4df1dc; }header { position:sticky; top:0; backdrop-filter: blur(6px); background:linear-gradient(180deg, rgba(6,10,20,0.9), rgba(6,10,20,0.6)); border-bottom:1px solid rgba(255,255,255,0.05); z-index:40; width:100%; }
+.container { max-width:1200px; margin:0 auto; padding:20px; }
+.nav { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.brand { display:flex; align-items:center; gap:12px; animation:fadeIn 1s ease; }
+.logo { width:44px; height:44px; display:inline-grid; place-items:center; background:linear-gradient(135deg,#0098f7,#2dd4bf); border-radius:10px; box-shadow:0 6px 18px rgba(45,212,191,0.3); transition:transform .3s; }
+.logo:hover { transform:rotate(6deg) scale(1.05); }
+.logo svg { width:26px; height:26px; fill:#fff; }
+.nav-links { display:flex; gap:18px; align-items:center; animation:fadeIn 1s ease; }
+.cta { background:var(--accent); color:#022; padding:10px 16px; border-radius:8px; font-weight:600; transition:all .3s; }
+.cta:hover { background:#4df1dc; transform:translateY(-2px); }
+
+/* Hero */
+.hero { display:grid; grid-template-columns:1fr 420px; gap:36px; align-items:center; padding:60px 0; text-align:left; }
+.hero-left h1 { font-size:40px; margin-bottom:16px; animation:slideInLeft 1s ease; }
+.hero-left p { color:var(--muted); margin-bottom:24px; animation:slideInLeft 1.3s ease; }
+.hero-cta { display:flex; gap:14px; flex-wrap:wrap; animation:slideInLeft 1.6s ease; }
+.card { background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.05)); padding:20px; border-radius:12px; border:1px solid rgba(255,255,255,0.05); box-shadow:0 4px 16px rgba(0,0,0,0.2); transition:transform .3s, box-shadow .3s; text-align:left; }
+.card:hover { transform:translateY(-4px); box-shadow:0 8px 20px rgba(0,0,0,0.3); }
+.features { display:flex; gap:12px; flex-wrap:wrap; margin-top:18px; }
+.feature { padding:10px 14px; border-radius:10px; background:var(--glass); color:var(--muted); font-size:14px; transition:background .3s; animation:fadeInUp 1s ease; }
+.feature:hover { background:rgba(255,255,255,0.08); }
+
+/* Sections */
+section { scroll-margin-top:70px; text-align:left; }
+.section { padding:60px 0; }
+
+/* Pricing */
+.pricing { display:flex; gap:16px; flex-wrap:wrap; margin-top:18px; justify-content:center; }
+.price-card { flex:1; min-width:260px; max-width:360px; text-align:center; animation:fadeInUp 1s ease; }
+.price-cost { font-size:26px; font-weight:700; margin:8px 0; }
+
+/* Security */
+.security { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; margin-top:18px; }
+.security .card { animation:fadeInUp 1s ease; }
+
+/* About */
+.about-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; }
+.dev { display:flex; gap:12px; align-items:center; padding:16px; background:var(--glass); border-radius:12px; animation:fadeInUp 1s ease; transition:transform .3s; }
+.dev:hover { transform:translateY(-4px); }
+.avatar { width:72px; height:72px; border-radius:50%; background:linear-gradient(180deg,#0ea5a3,#0284c7); display:grid; place-items:center; color:#022; font-weight:700; font-size:20px; }
+
+/* Contact */
+.contact-form { display:grid; gap:12px; max-width:400px; margin:20px auto; }
+.contact-form input, .contact-form textarea { padding:12px; border:none; border-radius:8px; background:rgba(255,255,255,0.08); color:#fff; }
+.contact-form button { padding:12px; border:none; border-radius:8px; background:var(--accent); color:#022; font-weight:600; transition:.3s; }
+.contact-form button:hover { background:#4df1dc; }
+
+/* Footer */
+footer { border-top:1px solid rgba(255,255,255,0.05); padding:28px 0; margin-top:28px; color:var(--muted); text-align:center; width:100%; }
+
+/* Floating Telegram button */
+.tg-btn { position:fixed; bottom:20px; right:20px; background:#0088cc; color:#fff; border-radius:50%; width:60px; height:60px; display:flex; align-items:center; justify-content:center; font-size:26px; box-shadow:0 6px 16px rgba(0,0,0,0.4); transition:transform .3s; z-index:100; }
+.tg-btn:hover { transform:scale(1.1); background:#33aaff; }
+
+/* Animations */
+.float { animation:float 6s ease-in-out infinite; }
+@keyframes float { 0%{transform:translateY(0)} 50%{transform:translateY(-12px)} 100%{transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes fadeInUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+@keyframes slideInLeft { from{opacity:0;transform:translateX(-30px)} to{opacity:1;transform:none} }
+
+/* Responsive */
+@media (max-width:900px) {
+  .hero { grid-template-columns:1fr; text-align:center; }
+  .hero-left h1 { font-size:32px; }
+  .about-grid { grid-template-columns:1fr; }
+  .nav-links { display:none; }
+  .card { text-align:center; }
+}
+@media (max-width:520px) {
+  .container { padding:16px; }
+  .hero-left h1 { font-size:26px; }
+}
+
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">
+          <svg viewBox="0 0 24 24" aria-hidden>
+            <path d="M2 21l20-9L2 3v7l14 2-14 2z"></path>
+          </svg>
+        </div>
+        <div>
+          <div style="font-weight:700">Clay Bot Labs</div>
+          <div style="font-size:12px;color:var(--muted)">Telegram bot development</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#who">How we build</a>
+        <a href="#security">Security</a>
+        <a href="#hosting">Hosting</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#about">Our Team</a>
+        <a class="cta" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>  <!-- Hero -->  <section class="container hero">
+    <div class="hero-left">
+      <h1>Powerful Telegram Bots, Built for You</h1>
+      <p>We design, secure, and host next-gen Telegram bots for businesses, communities, and individuals worldwide.</p>
+      <div class="hero-cta">
+        <a href="#pricing" class="cta">See Pricing</a>
+        <a href="#contact" class="cta" style="background:#0098f7; color:#fff">Get in Touch</a>
+      </div>
+    </div>
+    <div class="float">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Logo" width="320">
+    </div>
+  </section>  <!-- What we do -->  <section id="who" class="container section">
+    <h2>How We Build</h2>
+    <p>We follow a structured development process with attention to detail:</p>
+    <div class="features">
+      <div class="feature">🔹 Requirements Gathering & Planning</div>
+      <div class="feature">🔹 Scalable Bot Architecture</div>
+      <div class="feature">🔹 API Integrations</div>
+      <div class="feature">🔹 Testing & Quality Assurance</div>
+      <div class="feature">🔹 Deployment & Hosting</div>
+      <div class="feature">🔹 Maintenance & Updates</div>
+    </div>
+  </section>  <!-- Security -->  <section id="security" class="container section">
+    <h2>Security First</h2>
+    <p>Your data and your users' privacy are our top priority.</p>
+    <div class="security">
+      <div class="card"><h3>Data Encryption</h3><p>We use AES-256 and TLS encryption across all services to keep data safe in transit and storage.</p></div>
+      <div class="card"><h3>Authentication</h3><p>Multi-factor authentication and secure token management for all bots.</p></div>
+      <div class="card"><h3>DDoS Protection</h3><p>Advanced firewalls and rate-limiting to block spam & denial-of-service attacks.</p></div>
+      <div class="card"><h3>Logging & Monitoring</h3><p>24/7 activity logs, intrusion detection, and automated alerts.</p></div>
+      <div class="card"><h3>Regular Audits</h3><p>Frequent penetration testing and code audits by security engineers.</p></div>
+    </div>
+  </section>  <!-- Hosting -->  <section id="hosting" class="container section">
+    <h2>Reliable Hosting</h2>
+    <p>We host your bots on powerful servers with global uptime guarantees.</p>
+    <div class="features">
+      <div class="feature">⚡ 99.9% Uptime</div>
+      <div class="feature">☁️ Cloud-based Infrastructure</div>
+      <div class="feature">🔄 Automated Backups</div>
+      <div class="feature">🌍 Worldwide Servers</div>
+      <div class="feature">🛡️ DDoS Mitigation</div>
+    </div>
+  </section>  <!-- Pricing -->  <section id="pricing" class="container section">
+    <h2>Pricing</h2>
+    <div class="pricing">
+      <div class="card price-card">
+        <h3>Starter</h3>
+        <p class="price-cost">$10/mo</p>
+        <p>Basic bot with hosting</p>
+      </div>
+      <div class="card price-card">
+        <h3>Business</h3>
+        <p class="price-cost">$30/mo</p>
+        <p>Advanced bot + hosting + priority support</p>
+      </div>
+      <div class="card price-card">
+        <h3>Enterprise</h3>
+        <p class="price-cost">Custom</p>
+        <p>Full-scale automation & integrations</p>
+      </div>
+    </div>
+  </section>  <!-- About Us -->  <section id="about" class="container section">
+    <h2>About Our Team</h2>
+    <div class="about-grid">
+      <div>
+        <p>We are a group of developers and security engineers passionate about Telegram bots. Our team combines expertise in software engineering, cybersecurity, and scalable infrastructure to deliver world-class solutions.</p>
+      </div>
+      <div class="dev">
+        <div class="avatar">AB</div>
+        <div><h4>Arjun B.</h4><p>Lead Bot Developer</p></div>
+      </div>
+      <div class="dev">
+        <div class="avatar">SM</div>
+        <div><h4>Sarah M.</h4><p>Security Engineer</p></div>
+      </div>
+      <div class="dev">
+        <div class="avatar">DK</div>
+        <div><h4>Dev K.</h4><p>Infrastructure Specialist</p></div>
+      </div>
+    </div>
+  </section>  <!-- Contact -->  <section id="contact" class="container section">
+    <h2>Contact Us</h2>
+    <p>Have a project in mind? Let's talk!</p>
+    <p><a href="https://t.me/thunderguyind" class="cta">Message us on Telegram</a></p>
+    <p>Email: info.claygroup@gmail.com</p>
+  </section>  <!-- Footer -->  <footer>
+    <p>© 2025 Clay Bot Labs — Building the future of Telegram bots</p>
+  </footer>  <!-- Floating Telegram button --><a href="https://t.me/thunderguyind" class="tg-btn">✈️</a>
+
+</body>
+</html>
