@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,10 +97,13 @@
       margin: 10px;
       background: #222;
       border-radius: 8px;
-      transition: transform 0.3s;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s, color 0.3s;
     }
     .service-card:hover {
       transform: scale(1.05);
+      background: #0f0;
+      color: #000;
     }
     @keyframes glow {
       from { text-shadow: 0 0 10px #0f0; }
@@ -192,11 +196,12 @@
     <div class="service-card">Web & Mobile App Development</div>
     <div class="service-card">Cybersecurity Consulting</div>
     <div class="service-card">Social Media Recovery</div>
+    <div class="service-card" id="bot-development">Telegram & Other Bot Development</div>
   </section>
 
   <section class="contact">
     <h2>Contact Us</h2>
-    <p>Follow us on Instagram: @h4cker.in | Telegram: @claysecure22</p>
+    <p>Follow us on Instagram: @h4cker.in | Telegram: @thunderguyind</p>
   </section>
 
   <script>
@@ -211,6 +216,12 @@
           card.style.background = "#222";
           card.style.color = "#fff";
         });
+      });
+
+      // Redirect for Telegram & Bot Development
+      const botCard = document.getElementById("bot-development");
+      botCard.addEventListener("click", () => {
+        window.location.href = '/bots/';
       });
     });
 
