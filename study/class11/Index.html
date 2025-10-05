@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +37,7 @@ body::before {
 header {
     width: 100%;
     text-align: center;
-    padding: 50px 20px 20px 20px;
+    padding: 30px 20px 10px 20px;
 }
 header h1 {
     font-size: 3em;
@@ -46,32 +45,20 @@ header h1 {
     text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
 }
 
-/* ---------- Content Sections ---------- */
-section {
-    width: 90%;
-    max-width: 1000px;
-    margin: 30px auto;
-    padding: 20px;
-    background: rgba(0,0,0,0.3);
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0,255,255,0.2);
-    backdrop-filter: blur(5px);
-}
-
-/* ---------- Search Box ---------- */
-.search-container {
+/* ---------- Top Search ---------- */
+.top-search {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
 }
 input[type="text"] {
     width: 60%;
-    padding: 15px;
+    padding: 15px 20px;
     border-radius: 50px;
     border: none;
     outline: none;
     font-size: 1.2em;
-    margin-bottom: 15px;
     background: rgba(255,255,255,0.05);
     color: #fff;
     text-align: center;
@@ -82,9 +69,8 @@ input[type="text"]:focus {
     background: rgba(0,255,255,0.1);
     box-shadow: 0 0 20px #00ffff;
 }
-
 button {
-    padding: 12px 30px;
+    padding: 12px 25px;
     border-radius: 50px;
     border: none;
     background: #00ffff;
@@ -93,6 +79,7 @@ button {
     font-size: 1em;
     cursor: pointer;
     transition: 0.3s;
+    margin-left: 10px;
     box-shadow: 0 0 10px #00ffff;
 }
 button:hover {
@@ -102,8 +89,11 @@ button:hover {
 
 /* ---------- Results ---------- */
 .results {
-    margin-top: 30px;
-    width: 100%;
+    margin-top: 20px;
+    width: 90%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .file {
     display: flex;
@@ -130,15 +120,19 @@ button:hover {
     box-shadow: 0 0 20px #ff4757;
 }
 
-/* ---------- Additional Content ---------- */
-.about, .features, .usage {
-    line-height: 1.6;
+/* ---------- Sections ---------- */
+section {
+    width: 90%;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,255,255,0.2);
+    backdrop-filter: blur(5px);
 }
-.about h2, .features h2, .usage h2 {
-    color: #00ffff;
-    text-shadow: 0 0 10px #00ffff;
-    margin-bottom: 10px;
-}
+h2 { color: #00ffff; text-shadow: 0 0 10px #00ffff; margin-bottom: 10px; }
+p, ol, ul { line-height: 1.6; }
 
 /* ---------- Footer ---------- */
 footer {
@@ -154,7 +148,7 @@ footer {
     from { opacity: 0; transform: translateY(-10px);}
     to { opacity: 1; transform: translateY(0);}
 }
-.file { animation: fadeIn 0.8s ease forwards; }
+.file { animation: fadeIn 0.5s ease forwards; }
 </style>
 </head>
 <body>
@@ -162,36 +156,36 @@ footer {
     <h1>Clay Tech File Explorer</h1>
 </header>
 
+<div class="top-search">
+    <input type="text" id="searchInput" placeholder="Search files..." onkeyup="liveSearch(event)">
+    <button onclick="searchFiles()">Search</button>
+</div>
+
 <section class="about">
     <h2>About</h2>
-    <p>Clay Tech File Explorer is a modern, animated interface to search and download files easily. Designed for speed, usability, and aesthetics.</p>
+    <p>Clay Tech File Explorer is a modern interface to search and download files easily. Designed for speed, usability, and aesthetics.</p>
 </section>
 
 <section class="usage">
     <h2>How to Use</h2>
     <ol>
-        <li>Type the name of the file you want to search in the search box.</li>
-        <li>Click the <strong>Search</strong> button.</li>
-        <li>Click the <strong>Download</strong> button next to your file to download it.</li>
+        <li>Type part of the file name in the search box.</li>
+        <li>Auto suggestions will appear as you type.</li>
+        <li>Click the <strong>Download</strong> button next to the file you want.</li>
     </ol>
 </section>
 
 <section class="features">
     <h2>Features</h2>
     <ul>
-        <li>Animated, professional design.</li>
-        <li>Searchable file list.</li>
+        <li>Professional, animated design.</li>
+        <li>Live search and auto-suggest files.</li>
         <li>Direct download buttons.</li>
         <li>Responsive and mobile-friendly layout.</li>
-        <li>Prevent zooming and scrolling for a controlled experience.</li>
     </ul>
 </section>
 
-<section class="search-section">
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search files...">
-        <button onclick="searchFiles()">Search</button>
-    </div>
+<section class="results-section">
     <div class="results" id="results"></div>
 </section>
 
@@ -200,43 +194,47 @@ footer {
 </footer>
 
 <script>
-    // Add your files here
-    const files = [
-        "example1.pdf",
-        "example2.docx",
-        "example3.png",
-        "example4.zip",
-        "manual.txt",
-        "presentation.pptx"
-        "Class11_Chemistry_Chapter3_Advanced_Notes.pdf"
-        "Class11_Chemistry_Chapter3_Comprehensive_Notes.pdf"
-        "HBSE_Class_11_Notes_Guide.pdf"
-        "kome-text (1).pdf"
-        "kome-text.pdf"
-    ];
+const files = [
+    "Class11_Chemistry_Chapter3_Advanced_Notes.pdf",
+    "Class11_Chemistry_Chapter3_Comprehensive_Notes.pdf",
+    "HBSE_Class_11_Notes_Guide.pdf",
+    "kome-text (1).pdf",
+    "kome-text.pdf"
+];
 
-    function searchFiles() {
-        const query = document.getElementById('searchInput').value.toLowerCase();
-        const filtered = files.filter(f => f.toLowerCase().includes(query));
+// Live search on keyup
+function liveSearch(e) {
+    if(e.key === "Enter") { searchFiles(); return; }
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    const filtered = files.filter(f => f.toLowerCase().includes(query));
+    showResults(filtered);
+}
 
-        const resultsDiv = document.getElementById('results');
-        resultsDiv.innerHTML = '';
+// Manual search
+function searchFiles() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    const filtered = files.filter(f => f.toLowerCase().includes(query));
+    showResults(filtered);
+}
 
-        if(filtered.length === 0) {
-            resultsDiv.innerHTML = '<p>No files found.</p>';
-            return;
-        }
-
-        filtered.forEach(file => {
-            const div = document.createElement('div');
-            div.className = 'file';
-            div.innerHTML = `
-                <span>${file}</span>
-                <a href="${file}" download><button>Download</button></a>
-            `;
-            resultsDiv.appendChild(div);
-        });
+// Display results
+function showResults(filtered) {
+    const resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = '';
+    if(filtered.length === 0) {
+        resultsDiv.innerHTML = '<p>No files found.</p>';
+        return;
     }
+    filtered.forEach(file => {
+        const div = document.createElement('div');
+        div.className = 'file';
+        div.innerHTML = `
+            <span>${file}</span>
+            <a href="${file}" download><button>Download</button></a>
+        `;
+        resultsDiv.appendChild(div);
+    });
+}
 </script>
 </body>
 </html>
