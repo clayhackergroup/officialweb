@@ -7,16 +7,16 @@
 <style>
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f4f7f8;
-        color: #333;
+        background-color: #f0f4f8;
         margin: 0;
         padding: 0;
+        color: #333;
     }
     header {
         background-color: #2c3e50;
         color: white;
         text-align: center;
-        padding: 20px;
+        padding: 25px;
         font-size: 1.8em;
         font-weight: bold;
     }
@@ -24,39 +24,49 @@
         width: 90%;
         max-width: 1000px;
         margin: 20px auto;
-        background: white;
+        background-color: white;
         padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        border-radius: 12px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
     }
     h2 {
         background-color: #3498db;
         color: white;
-        padding: 10px;
-        border-radius: 5px;
+        padding: 12px;
+        border-radius: 6px;
+        margin-top: 20px;
         cursor: pointer;
+        transition: background 0.3s;
     }
     h2:hover {
         background-color: #2980b9;
     }
     .content {
-        padding: 10px 20px;
+        padding: 15px 25px;
         display: none;
+        animation: fadeIn 0.4s;
+    }
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
     }
     ul {
-        margin: 10px 0;
-        padding-left: 20px;
+        margin: 10px 0 10px 20px;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 6px;
     }
     table {
         width: 100%;
         border-collapse: collapse;
-        margin: 10px 0;
+        margin: 15px 0;
     }
     table, th, td {
         border: 1px solid #ddd;
     }
     th, td {
-        padding: 8px;
+        padding: 10px;
         text-align: left;
     }
     th {
@@ -65,15 +75,22 @@
     }
     .example {
         background-color: #ecf0f1;
-        padding: 8px;
         border-left: 5px solid #3498db;
+        padding: 10px;
+        margin: 10px 0;
+        font-style: italic;
+    }
+    p.tip {
+        background-color: #ffecb3;
+        border-left: 5px solid #f39c12;
+        padding: 10px;
         margin: 10px 0;
     }
 </style>
 </head>
 <body>
 
-<header>Class 11 HBSE Computer Science – Chapter 1: Computer Fundamentals</header>
+<header>Class 11 HBSE Computer Science – Chapter 1</header>
 
 <div class="container">
 
@@ -87,25 +104,22 @@
         <li>Produce output in a useful form</li>
     </ul>
     <div class="example">
-        Example: <br>
-        Input: Marks of 5 subjects <br>
-        Processing: Total & Average calculation <br>
-        Output: Total = 450, Average = 90
+        Example: Input: Marks of 5 subjects; Processing: Total & Average calculation; Output: Total = 450, Average = 90
     </div>
     <p><b>Characteristics of Computer:</b></p>
     <ul>
-        <li>High Speed: Can perform millions or billions of calculations per second</li>
-        <li>Accuracy: Produces correct results if input and program are correct</li>
+        <li>High Speed: Millions or billions of operations per second</li>
+        <li>Accuracy: Produces correct results</li>
         <li>Automation: Works automatically according to instructions</li>
-        <li>Versatility: Can perform multiple tasks like calculations, graphics, games, etc.</li>
-        <li>Storage & Retrieval: Can store huge amounts of data and retrieve it quickly</li>
-        <li>Connectivity: Can connect with other computers via networks</li>
+        <li>Versatility: Multiple tasks like calculations, games, graphics</li>
+        <li>Storage & Retrieval: Can store and retrieve huge amounts of data</li>
+        <li>Connectivity: Can connect to other computers via networks</li>
     </ul>
 </div>
 
 <h2 onclick="toggleContent(this)">2. Evolution of Computers</h2>
 <div class="content">
-    <p>Computers have evolved in 5 generations:</p>
+    <p>Computers evolved in 5 generations:</p>
     <table>
         <tr>
             <th>Generation</th>
@@ -117,7 +131,7 @@
             <td>1st (1940-56)</td>
             <td>Vacuum Tubes</td>
             <td>ENIAC</td>
-            <td>Huge size, slow, generated heat, consumed lots of electricity</td>
+            <td>Large, slow, heat, high electricity consumption</td>
         </tr>
         <tr>
             <td>2nd (1956-63)</td>
@@ -134,7 +148,7 @@
         <tr>
             <td>4th (1971-Present)</td>
             <td>Microprocessors</td>
-            <td>Personal Computers</td>
+            <td>PCs</td>
             <td>Very fast, portable, affordable</td>
         </tr>
         <tr>
@@ -150,58 +164,56 @@
 <div class="content">
     <p>Memory stores data and instructions:</p>
     <ul>
-        <li><b>Primary Memory (Fast & Volatile)</b>
+        <li><b>Primary Memory:</b>
             <ul>
-                <li>RAM: Temporary memory, volatile, example: programs currently running</li>
-                <li>ROM: Permanent memory, non-volatile, stores boot instructions</li>
+                <li>RAM: Temporary, volatile, example: open programs</li>
+                <li>ROM: Permanent, non-volatile, stores boot instructions</li>
             </ul>
         </li>
-        <li><b>Secondary Memory</b>: Stores data permanently, examples: HDD, SSD, Pen Drive, CD/DVD</li>
-        <li><b>Cache Memory</b>: Very fast memory between CPU and RAM for quick access</li>
+        <li><b>Secondary Memory:</b> Permanent storage, examples: HDD, SSD, Pen Drive, CD/DVD</li>
+        <li><b>Cache Memory:</b> Very fast memory between CPU and RAM for quick access</li>
     </ul>
 </div>
 
 <h2 onclick="toggleContent(this)">4. Data Transfer between Memory and CPU</h2>
 <div class="content">
-    <p>The CPU (Central Processing Unit) is the brain of the computer.</p>
-    <p>Buses for Data Transfer:</p>
+    <p>CPU is the brain of the computer. It communicates with memory using buses:</p>
     <ul>
         <li>Data Bus: Transfers actual data</li>
         <li>Address Bus: Tells CPU where to read/write</li>
-        <li>Control Bus: Sends control signals (Read/Write)</li>
+        <li>Control Bus: Sends commands like Read/Write</li>
     </ul>
-    <p><b>Data Flow Example:</b></p>
-    <p>Input → Memory → CPU → Processing → Output → Storage</p>
+    <p><b>Data Flow Example:</b> Input → Memory → CPU → Processing → Output → Storage</p>
 </div>
 
 <h2 onclick="toggleContent(this)">5. Microprocessor</h2>
 <div class="content">
-    <p>A microprocessor is a single-chip CPU that performs all operations of a computer.</p>
+    <p>A microprocessor is a single-chip CPU that performs all operations:</p>
     <ul>
-        <li>ALU: Performs calculations and logical operations</li>
-        <li>CU: Directs the flow of data and instructions</li>
+        <li>ALU: Arithmetic & logic operations</li>
+        <li>CU: Directs flow of instructions</li>
         <li>Input/Output Operations: Communicates with devices</li>
     </ul>
-    <p>Uses: PCs, laptops, smartphones, calculators, washing machines, ATMs</p>
+    <p>Uses: PCs, laptops, smartphones, calculators, ATMs</p>
     <p>Key Features: Fast, compact, versatile</p>
 </div>
 
 <h2 onclick="toggleContent(this)">6. Data and Information</h2>
 <div class="content">
     <ul>
-        <li>Data: Raw facts, numbers, or letters. Example: 10, 20, 30</li>
-        <li>Information: Processed data that is meaningful. Example: Total marks = 150</li>
+        <li>Data: Raw facts, numbers, letters (Example: 10, 20, 30)</li>
+        <li>Information: Processed data, meaningful (Example: Total marks = 150)</li>
     </ul>
-    <p>Key Concept: Data → Processing → Information</p>
+    <p>Concept: Data → Processing → Information</p>
 </div>
 
 <h2 onclick="toggleContent(this)">7. Software</h2>
 <div class="content">
-    <p>Software is a set of instructions that tells the computer what to do.</p>
+    <p>Software is a set of instructions for the computer:</p>
     <ul>
-        <li>System Software: Helps the computer run
+        <li>System Software:
             <ul>
-                <li>OS: Manages CPU, memory, storage, devices (Windows, Linux, macOS)</li>
+                <li>OS: Manages CPU, memory, storage, devices (Windows, Linux)</li>
                 <li>Utility Programs: Maintenance programs like Antivirus</li>
             </ul>
         </li>
@@ -218,14 +230,12 @@
 
 <h2 onclick="toggleContent(this)">8. Operating System (OS)</h2>
 <div class="content">
-    <p>The Operating System is a system software that acts as an interface between the user and hardware.</p>
-    <p>Functions of OS:</p>
     <ul>
-        <li>Resource Management: CPU, memory, storage</li>
-        <li>File Management: Organizes files & folders</li>
-        <li>Process Management: Runs multiple programs simultaneously</li>
-        <li>Device Management: Controls input/output devices</li>
-        <li>User Interface: Provides GUI for easy interaction</li>
+        <li>Manages hardware, memory, and storage</li>
+        <li>Organizes files and folders</li>
+        <li>Runs multiple programs simultaneously</li>
+        <li>Controls input/output devices</li>
+        <li>Provides user interface (GUI)</li>
     </ul>
     <p>Examples: Windows, macOS, Linux, Android</p>
 </div>
@@ -234,13 +244,13 @@
 <div class="content">
     <ul>
         <li>Computer = Input + Processing + Output + Storage</li>
-        <li>Memory Types: RAM (temporary), ROM (permanent), Cache (fast), Secondary storage (HDD, SSD)</li>
-        <li>CPU/Microprocessor: Brain of the computer, does all processing</li>
-        <li>Data → Information: Data is raw; processing makes it meaningful</li>
-        <li>Software: System Software (OS, Utilities), Application Software (Word, Excel)</li>
-        <li>Operating System: Manages hardware, files, devices, processes, and provides GUI</li>
+        <li>Memory Types: RAM, ROM, Cache, Secondary Storage</li>
+        <li>CPU/Microprocessor = Brain of computer</li>
+        <li>Data → Information: Raw data processed into meaningful information</li>
+        <li>Software: System (OS, Utilities) + Application (Word, Excel, etc.)</li>
+        <li>Operating System: Manages hardware, files, devices, processes, GUI</li>
     </ul>
-    <p><b>Tip for Exam:</b> Remember the flow: Input → Memory → CPU → Processing → Output → Storage → Information</p>
+    <p class="tip">Tip for Exam: Remember the flow: Input → Memory → CPU → Processing → Output → Storage → Information. Understand data vs information, types of memory, software, OS, and generations.</p>
 </div>
 
 </div>
