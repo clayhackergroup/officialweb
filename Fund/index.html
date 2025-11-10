@@ -3,163 +3,161 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clay Group for Needy - Feed the Hungry</title>
+  <title>Clay Tech Group for Needy</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+    :root {
+      --accent: #facc15;
+      --bg-dark: rgba(0,0,0,0.7);
     }
-
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
     body {
-      color: #fff;
-      background: linear-gradient(to bottom right, rgba(0,0,0,0.85), rgba(0,0,0,0.7)),
-                  url('https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1950&q=80');
-      background-size: cover;
-      background-position: center;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      color:#fff;
+      overflow-x:hidden;
+      background:#000;
     }
-
-    .overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1;
+    header {
+      position:fixed;top:0;left:0;width:100%;z-index:10;
+      background:rgba(0,0,0,0.6);backdrop-filter:blur(6px);
+      display:flex;justify-content:space-between;align-items:center;
+      padding:12px 40px;
     }
+    header h2{color:var(--accent);}
+    header a{color:#fff;text-decoration:none;margin-left:25px;font-weight:500;}
+    header a:hover{color:var(--accent);}
 
-    .content {
-      z-index: 2;
-      max-width: 600px;
-      animation: fadeInUp 1.8s ease-out;
-      backdrop-filter: blur(6px);
-      padding: 20px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.05);
+    section {
+      min-height:100vh;
+      display:flex;flex-direction:column;justify-content:center;align-items:center;
+      text-align:center;padding:80px 20px;position:relative;overflow:hidden;
     }
-
-    h1 {
-      font-size: 2.5em;
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: #facc15;
-      text-shadow: 0 0 10px rgba(250, 204, 21, 0.6);
+    .hero{
+      background:var(--bg-dark);
     }
-
-    p {
-      font-size: 1.1em;
-      margin-bottom: 25px;
-      line-height: 1.6em;
+    .hero h1{
+      font-size:2.8em;margin-bottom:10px;color:var(--accent);
+      text-shadow:0 0 10px rgba(250,204,21,0.5);
     }
-
-    .donate-btn {
-      display: inline-block;
-      background: #facc15;
-      color: #000;
-      padding: 14px 30px;
-      border-radius: 50px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 15px rgba(250, 204, 21, 0.5);
+    .hero p{max-width:700px;line-height:1.6em;margin-bottom:30px;}
+    .donate-btn{
+      background:var(--accent);color:#000;padding:14px 34px;border-radius:50px;
+      text-decoration:none;font-weight:600;transition:0.3s;box-shadow:0 0 15px rgba(250,204,21,0.4);
     }
+    .donate-btn:hover{transform:scale(1.05);background:#fff;}
 
-    .donate-btn:hover {
-      background: #fff;
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
-      transform: scale(1.05);
+    .about,.why,.donate{
+      background:var(--bg-dark);
+      backdrop-filter:blur(4px);
     }
+    .about h2,.why h2,.donate h2{color:var(--accent);margin-bottom:15px;font-size:2em;}
+    .about p,.why p{max-width:800px;margin:auto;line-height:1.7em;margin-bottom:15px;}
 
-    .qr-section {
-      margin-top: 25px;
-      animation: fadeIn 3s ease-in-out;
+    .donate img{
+      width:150px;border-radius:10px;box-shadow:0 0 15px rgba(255,255,255,0.3);
+      margin:15px 0;
     }
-
-    .qr-section img {
-      width: 150px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      box-shadow: 0 0 15px rgba(255,255,255,0.4);
+    .btc{
+      background:rgba(255,255,255,0.1);padding:8px 12px;border-radius:8px;display:inline-block;
+      font-size:0.9em;
     }
-
-    .btc {
-      font-size: 0.9em;
-      margin-top: 10px;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 8px 10px;
-      border-radius: 8px;
-      display: inline-block;
+    footer{
+      background:#000;text-align:center;padding:20px;color:#aaa;font-size:0.85em;
     }
+    footer a{color:var(--accent);text-decoration:none;}
+    footer a:hover{text-decoration:underline;}
 
-    footer {
-      position: absolute;
-      bottom: 15px;
-      width: 100%;
-      text-align: center;
-      color: #ccc;
-      font-size: 0.8em;
-      z-index: 2;
-      animation: fadeIn 4s ease-in-out;
+    /* Background slideshow */
+    .bg-slide{
+      position:fixed;inset:0;z-index:-1;
+      background-size:cover;background-position:center;
+      animation:slideShow 30s infinite;
     }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes slideShow{
+      0%   {background-image:url('https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1920&q=80');}
+      25%  {background-image:url('https://images.unsplash.com/photo-1529688530643-54a1b1d45a00?auto=format&fit=crop&w=1920&q=80');}
+      50%  {background-image:url('https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1920&q=80');}
+      75%  {background-image:url('https://images.unsplash.com/photo-1532635241-17e820acc59f?auto=format&fit=crop&w=1920&q=80');}
+      100% {background-image:url('https://images.unsplash.com/photo-1543163521-1bf539c55ddc?auto=format&fit=crop&w=1920&q=80');}
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      h1 { font-size: 1.8em; }
-      p { font-size: 1em; }
+    @media(max-width:700px){
+      header{padding:10px 20px;}
+      .hero h1{font-size:2em;}
     }
   </style>
 </head>
 <body>
-  <div class="overlay"></div>
+  <div class="bg-slide"></div>
 
-  <div class="content">
-    <h1>Clay Group for Needy 🌍</h1>
+  <header>
+    <h2>Clay Tech Group for Needy</h2>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#why">Why Donate</a>
+      <a href="#donate">Donate</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <h1>Together We Feed the Hungry 🌍</h1>
     <p>
-      We are a worldwide initiative committed to fighting hunger and helping the poor.  
-      Your small act of kindness can feed someone today. Join us in spreading hope, one meal at a time.
+      Clay Tech Group for Needy is a global humanitarian effort by Clay Tech Group — a team of cybersecurity and web-development specialists using technology and heart to make real-world impact.  
+      Every small contribution helps provide food and dignity to someone in need.
     </p>
+    <a href="https://donorbox.org/food-for-needy-838103" class="donate-btn" target="_blank">Donate Now</a>
+  </section>
 
-    <a href="https://donorbox.org/food-for-needy-838103" class="donate-btn" target="_blank">
-      Donate Now 💛
-    </a>
+  <section class="about" id="about">
+    <h2>About Us</h2>
+    <p>
+      We are <strong>Clay Tech Group</strong>, a passionate team specializing in cybersecurity and web development.  
+      Beyond building secure digital ecosystems, we believe in creating a secure world for everyone — starting with something as basic and powerful as a meal.
+    </p>
+    <p>
+      Our digital skills fund our social initiatives.  
+      We use part of our resources and community support to feed the hungry and support underprivileged families globally.
+    </p>
+  </section>
 
-    <div class="qr-section">
-      <img src="qr.png" alt="UPI QR Code">
+  <section class="why" id="why">
+    <h2>Why We Donate</h2>
+    <p>
+      In a connected world, compassion must also be connected.  
+      Millions still sleep hungry each night. Our mission is to unite technologists, creators, and kind hearts to ensure no one is left behind.
+    </p>
+    <p>
+      By contributing, you’re not just giving food — you’re giving hope, humanity, and a message that kindness still leads the way.
+    </p>
+  </section>
+
+  <section class="donate" id="donate">
+    <h2>Ways to Contribute</h2>
+    <p>
+      💛 Click below to donate securely through Donorbox, scan our QR code, or send BTC anonymously.
+    </p>
+    <a href="https://donorbox.org/food-for-needy-838103" class="donate-btn" target="_blank">Open Donorbox</a>
+
+    <div>
+      <img src="qr.png" alt="Donorbox QR" />
       <div class="btc">
-        <strong>BTC Address:</strong> <br>
-        <span> 1Dd5vBxnvcxx26tTg9GKib6HQ6HoYUkbip </span>
+        <strong>BTC Address:</strong><br/>
+        1Dd5vBxnvcxx26tTg9GKib6HQ6HoYUkbip
       </div>
     </div>
-  </div>
+  </section>
 
-  <footer>© 2025 Clay Group for Needy | Together we can make a difference 🌱</footer>
+  <footer>
+    © 2025 Clay Tech Group for Needy | Made with 💛 by Clay Tech Group | 
+    <a href="https://instagram.com/h4cker.in" target="_blank">@h4cker.in</a>
+  </footer>
 
   <script>
-    // Subtle background zoom animation
-    let bg = document.body;
-    let zoom = 1;
-    setInterval(() => {
-      zoom = zoom === 1 ? 1.05 : 1;
-      bg.style.backgroundSize = `${zoom * 100}% auto`;
-    }, 6000);
+    // simple smooth scroll for nav
+    document.querySelectorAll('header a').forEach(a=>{
+      a.addEventListener('click',e=>{
+        e.preventDefault();
+        document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+      });
+    });
   </script>
 </body>
 </html>
