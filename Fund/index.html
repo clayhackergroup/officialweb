@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clay Group for Needy - Feed the Hungry</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      color: #fff;
+      background: linear-gradient(to bottom right, rgba(0,0,0,0.85), rgba(0,0,0,0.7)),
+                  url('https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .content {
+      z-index: 2;
+      max-width: 600px;
+      animation: fadeInUp 1.8s ease-out;
+      backdrop-filter: blur(6px);
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    h1 {
+      font-size: 2.5em;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #facc15;
+      text-shadow: 0 0 10px rgba(250, 204, 21, 0.6);
+    }
+
+    p {
+      font-size: 1.1em;
+      margin-bottom: 25px;
+      line-height: 1.6em;
+    }
+
+    .donate-btn {
+      display: inline-block;
+      background: #facc15;
+      color: #000;
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(250, 204, 21, 0.5);
+    }
+
+    .donate-btn:hover {
+      background: #fff;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+      transform: scale(1.05);
+    }
+
+    .qr-section {
+      margin-top: 25px;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    .qr-section img {
+      width: 150px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.4);
+    }
+
+    .btc {
+      font-size: 0.9em;
+      margin-top: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 8px 10px;
+      border-radius: 8px;
+      display: inline-block;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      width: 100%;
+      text-align: center;
+      color: #ccc;
+      font-size: 0.8em;
+      z-index: 2;
+      animation: fadeIn 4s ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      h1 { font-size: 1.8em; }
+      p { font-size: 1em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <div class="content">
+    <h1>Clay Group for Needy 🌍</h1>
+    <p>
+      We are a worldwide initiative committed to fighting hunger and helping the poor.  
+      Your small act of kindness can feed someone today. Join us in spreading hope, one meal at a time.
+    </p>
+
+    <a href="https://donorbox.org/food-for-needy-838103" class="donate-btn" target="_blank">
+      Donate Now 💛
+    </a>
+
+    <div class="qr-section">
+      <img src="qr.png" alt="UPI QR Code">
+      <div class="btc">
+        <strong>BTC Address:</strong> <br>
+        <span> 1Dd5vBxnvcxx26tTg9GKib6HQ6HoYUkbip </span>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2025 Clay Group for Needy | Together we can make a difference 🌱</footer>
+
+  <script>
+    // Subtle background zoom animation
+    let bg = document.body;
+    let zoom = 1;
+    setInterval(() => {
+      zoom = zoom === 1 ? 1.05 : 1;
+      bg.style.backgroundSize = `${zoom * 100}% auto`;
+    }, 6000);
+  </script>
+</body>
+</html>
