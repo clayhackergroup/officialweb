@@ -1,134 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Privacy & Policy - Clay Group</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #0e0e0e;
-      color: #fff;
-      line-height: 1.6;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotifySoul Privacy Policy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            color: #f5f5f5;
+            line-height: 1.6;
+            padding: 2rem;
+            animation: fadeIn 1.5s ease-in;
+        }
+        a { color: #5CE1E6; text-decoration: none; transition: color 0.3s; }
+        a:hover { color: #FF6F61; }
 
-    header {
-      background: linear-gradient(to right, #111, #222);
-      padding: 30px 20px;
-      text-align: center;
-      animation: fadeInDown 1s ease;
-    }
+        /* Header */
+        h1 {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            background: linear-gradient(90deg, #FF6F61, #5CE1E6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: slideDown 1s ease-out;
+        }
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #FFD700;
+            border-bottom: 2px solid #5CE1E6;
+            display: inline-block;
+        }
 
-    header h1 {
-      font-size: 2.5em;
-      color: #0f0;
-      text-shadow: 0 0 10px #0f0;
-    }
+        /* Paragraphs and lists */
+        p { margin-bottom: 1rem; }
+        ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; }
 
-    .container {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 20px;
-      background: #111;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
-      animation: fadeIn 2s ease;
-    }
+        /* Highlight boxes */
+        .highlight {
+            background: rgba(92, 225, 230, 0.1);
+            border-left: 4px solid #5CE1E6;
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            animation: fadeIn 2s ease;
+        }
 
-    h2 {
-      color: #0f0;
-      margin-top: 20px;
-    }
+        /* Divider */
+        hr {
+            border: 0;
+            border-top: 2px solid #5CE1E6;
+            margin: 2rem 0;
+            opacity: 0.5;
+        }
 
-    p {
-      color: #ccc;
-      font-size: 1.05em;
-    }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
 
-    .section {
-      margin-bottom: 25px;
-    }
+        /* Scroll animations */
+        [data-animate] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        [data-animate].active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    .toggle-btn {
-      background: #0f0;
-      color: #000;
-      padding: 10px 20px;
-      border: none;
-      font-weight: bold;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-bottom: 15px;
-      transition: background 0.3s;
-    }
-
-    .toggle-btn:hover {
-      background: #0a0;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media screen and (max-width: 600px) {
-      header h1 {
-        font-size: 2em;
-      }
-    }
-  </style>
-
-  <!-- Google AdSense Script -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1892737955144820"
-    crossorigin="anonymous"></script>
+        /* Footer text */
+        em { display: block; text-align: center; margin-top: 2rem; font-style: italic; color: #bbb; }
+    </style>
 </head>
 <body>
+    <h1>NotifySoul Privacy Policy</h1>
+    <p><strong>Effective Date:</strong> November 13, 2025</p>
 
-<header>
-  <h1>Privacy & Policies</h1>
-</header>
+    <section data-animate>
+        <h2>1. Introduction</h2>
+        <p>Notify Soul ("we", "our", or "us") respects your privacy. This Privacy Policy explains how we collect, use, and protect your information when you use our mobile application.</p>
+    </section>
 
-<div class="container">
-  <button class="toggle-btn" onclick="toggleSection('dataUsage')">Toggle Data Usage</button>
-  <div id="dataUsage" class="section">
-    <h2>1. Data Collection & Usage</h2>
-    <p>We collect only essential data to provide our services, including contact details and submitted forms. No sensitive data is stored or shared without your permission.</p>
-  </div>
+    <section data-animate>
+        <h2>2. Information We Collect</h2>
+        <p>Notify Soul collects and stores the following information:</p>
+        <ul>
+            <li><strong>Notification Data:</strong> Content of notifications from messaging apps (WhatsApp, Instagram, Telegram, etc.) including sender names, message text, and timestamps</li>
+            <li><strong>Device Information:</strong> Android version, device model for app functionality</li>
+            <li><strong>Ad-related Data:</strong> Google AdMob may collect advertising identifiers and usage data for ad personalization</li>
+        </ul>
+    </section>
 
-  <button class="toggle-btn" onclick="toggleSection('cookies')">Toggle Cookies</button>
-  <div id="cookies" class="section">
-    <h2>2. Cookies</h2>
-    <p>We may use cookies to improve user experience, but we do not track or sell your personal data to third parties. You can disable cookies anytime from your browser.</p>
-  </div>
+    <section data-animate>
+        <h2>3. How We Use Your Information</h2>
+        <ul>
+            <li>Displaying notification history and deleted messages</li>
+            <li>Providing app features and functionality</li>
+            <li>Showing personalized advertisements via Google AdMob</li>
+            <li>Improving app performance and user experience</li>
+        </ul>
+    </section>
 
-  <button class="toggle-btn" onclick="toggleSection('security')">Toggle Security</button>
-  <div id="security" class="section">
-    <h2>3. Security</h2>
-    <p>Your data security is our top priority. We implement strong security protocols and ethical practices to protect your information against unauthorized access.</p>
-  </div>
+    <section data-animate>
+        <h2>4. Data Storage and Security</h2>
+        <p class="highlight">All notification data is stored LOCALLY on your device only.</p>
+        <ul>
+            <li>We do NOT upload or transmit your notification data to any servers</li>
+            <li>Data remains on your device and is deleted when you uninstall the app</li>
+            <li>You can clear your history at any time using the "Clear History" button</li>
+        </ul>
+    </section>
 
-  <button class="toggle-btn" onclick="toggleSection('thirdparty')">Toggle Third Party Access</button>
-  <div id="thirdparty" class="section">
-    <h2>4. Third Party Access</h2>
-    <p>We do not share any user data with third parties, except when required by law or with your explicit consent for service enhancement.</p>
-  </div>
-</div>
+    <section data-animate>
+        <h2>5. Third-Party Services</h2>
+        <p>Notify Soul uses Google AdMob for advertisements. AdMob may collect:</p>
+        <ul>
+            <li>Advertising ID</li>
+            <li>Device information</li>
+            <li>Usage statistics</li>
+        </ul>
+        <p>Please review Google's Privacy Policy: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></p>
+    </section>
 
-<script>
-  function toggleSection(id) {
-    const el = document.getElementById(id);
-    el.classList.toggle("hidden");
-  }
-</script>
+    <section data-animate>
+        <h2>6. Notification Listener Permission</h2>
+        <ul>
+            <li>Read incoming notifications from messaging apps</li>
+            <li>Detect when notifications are deleted</li>
+            <li>Store notification content locally</li>
+        </ul>
+        <p class="highlight">This permission is ONLY used for app functionality. We do NOT share or sell your data.</p>
+    </section>
 
+    <section data-animate>
+        <h2>7. Data Retention</h2>
+        <ul>
+            <li>Notification data is retained until you delete it or uninstall the app</li>
+            <li>Premium feature unlock data is stored for 7 days after watching ads</li>
+            <li>You have full control to delete all data at any time</li>
+        </ul>
+    </section>
+
+    <section data-animate>
+        <h2>8. Children's Privacy</h2>
+        <p>Notify Soul is not intended for users under 13 years of age. We do not knowingly collect information from children.</p>
+    </section>
+
+    <section data-animate>
+        <h2>9. Your Rights</h2>
+        <ul>
+            <li>Access your stored notification data</li>
+            <li>Delete all your data using "Clear History"</li>
+            <li>Revoke notification access permission at any time</li>
+            <li>Uninstall the app to permanently delete all data</li>
+        </ul>
+    </section>
+
+    <section data-animate>
+        <h2>10. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. Changes will be posted within the app with an updated effective date.</p>
+    </section>
+
+    <section data-animate>
+        <h2>11. Contact Us</h2>
+        <p>If you have questions about this Privacy Policy, contact us at:</p>
+        <p><strong>Email:</strong> <a href="mailto:support@notifysoul.app">support@notifysoul.app</a></p>
+    </section>
+
+    <hr>
+    <em>By using Notify Soul, you agree to this Privacy Policy.</em>
+
+    <script>
+        // Simple scroll animation
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('[data-animate]').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
