@@ -10,7 +10,7 @@ const appDatabase = [
         version: '1.0.0',
         size: '24 MB',
         updated: 'Nov 2025',
-        downloadPath: 'apk/notify-soul.apk'
+        downloadPath: 'apk/apk/notifysoul.apk'
     },
     {
         id: 'cipher-guard',
