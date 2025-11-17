@@ -1,205 +1,455 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clays App Store</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Roboto', sans-serif; }
-    body { background: #f5f5f5; color:#333; }
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clays App Store</title>
+  <!-- Google Fonts for a modern look -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset & root styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      height: 100%;
+      font-family: 'Roboto', Arial, sans-serif;
+      background: linear-gradient(135deg,#f9fafe 0%, #e9efff 100%);
+      color: #222;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
     /* Header */
-    header {
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        padding:15px 30px;
-        background-color:#fff;
-        box-shadow:0 2px 8px rgba(0,0,0,0.1);
-        position:sticky;
-        top:0;
-        z-index:100;
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 72px;
     }
-    header h1 { font-size:1.8rem; color:#1a73e8; font-weight:700; }
-    .search-bar input {
-        padding:10px 15px;
-        width:300px;
-        border-radius:30px;
-        border:1px solid #ccc;
-        outline:none;
-        transition: all 0.3s;
+    .header-title {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #517efd 40%, #2bc2af 100%);
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -1px;
+      user-select: none;
     }
-    .search-bar input:focus { border-color:#1a73e8; width:400px; }
+    .search-container {
+      display: flex;
+      align-items: center;
+    }
+    .search-box {
+      width: 250px;
+      max-width: 60vw;
+      padding: 0.6em 1.7em 0.6em 1em;
+      border-radius: 25px;
+      border: 1px solid #e5e8ec;
+      font-size: 1rem;
+      transition: all 0.2s;
+      box-shadow: 0 1.5px 5px rgba(76,110,245,0.04);
+      background: #f9fafe;
+    }
+    .search-box:focus {
+      outline: none;
+      border-color: #517efd;
+      background: #fff;
+      box-shadow: 0 4px 20px 0 rgba(82,153,255,0.08);
+    }
 
     /* Carousel */
-    .carousel {
-        width:100%;
-        max-width:1200px;
-        margin:20px auto;
-        position:relative;
-        overflow:hidden;
-        border-radius:15px;
-        box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      margin: 2rem auto 1.5rem;
+      overflow: hidden;
+      border-radius: 22px;
+      box-shadow: 0 0 24px 0 rgba(76, 110, 245, 0.08);
+      background: #fff;
+      min-height: 210px;
+      padding-bottom: 4px;
     }
-    .carousel-track {
-        display:flex;
-        transition: transform 0.5s ease-in-out;
+    .carousel-slider {
+      display: flex;
+      transition: transform 0.7s cubic-bezier(.47,.9,.31,.97);
+      will-change: transform;
     }
-    .carousel-slide {
-        min-width:100%;
-        height:200px;
-        position:relative;
+    .carousel-item {
+      min-width: 100%;
+      object-fit: cover;
+      height: 210px;
+      position: relative;
     }
-    .carousel-slide img {
-        width:100%;
-        height:100%;
-        object-fit:cover;
-        border-radius:15px;
+    .carousel-caption {
+      position: absolute;
+      bottom: 1.3rem;
+      left: 2rem;
+      color: #fff;
+      background: rgba(32,52,96,0.36);
+      padding: 0.4em 1em;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      box-shadow: 0 2px 14px 0 rgba(76, 110, 245, 0.17);
+    }
+    /* Dots */
+    .carousel-dots {
+      position: absolute;
+      bottom: 12px;
+      right: 25px;
+      display: flex;
+      gap: 8px;
+    }
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #e3e8ff;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      opacity: 0.75;
+    }
+    .carousel-dot.active {
+      background: #4d81ff;
+      opacity: 1;
     }
 
-    /* App Grid */
-    .app-grid {
-        display:grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap:20px;
-        padding:20px 30px;
-        max-width:1200px;
-        margin:auto;
+    /* Apps List */
+    .apps-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+      flex: 1;
     }
-
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(288px,1fr));
+      gap: 2rem;
+      justify-items: center;
+      margin-top: 2rem;
+      width: 100%;
+    }
     /* App Card */
     .app-card {
-        background-color:#fff;
-        border-radius:20px;
-        overflow:hidden;
-        box-shadow:0 2px 10px rgba(0,0,0,0.1);
-        transition: transform 0.3s, box-shadow 0.3s;
-        cursor:pointer;
-        display:flex;
-        flex-direction:column;
+      background: #fff;
+      border-radius: 19px;
+      box-shadow: 0 3px 18px -4px rgba(44, 62, 80, 0.07);
+      padding: 1.2rem 1.1rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      transition: transform 0.23s cubic-bezier(.33,1.02,.73,1.09), box-shadow 0.23s;
+      cursor: pointer;
     }
     .app-card:hover {
-        transform: translateY(-10px);
-        box-shadow:0 12px 25px rgba(0,0,0,0.2);
+      transform: translateY(-10px) scale(1.035);
+      box-shadow: 0 8px 36px 0 rgba(82,133,255,0.17);
+      z-index: 5;
     }
-    .app-card img {
-        width:100%;
-        height:150px;
-        object-fit:cover;
+    .app-image {
+      border-radius: 50%;
+      width: 84px;
+      height: 84px;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 3px solid #e6ebfa;
+      background: #f3f6fa;
+      box-shadow: 0 1.5px 7px rgba(76,110,245,0.07);
     }
-    .app-info {
-        padding:15px;
-        flex:1;
-        display:flex;
-        flex-direction:column;
-        justify-content:space-between;
+    .app-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 4px;
+      color: #37477b;
+      letter-spacing: -0.5px;
     }
-    .app-info h3 { font-size:1.3rem; margin-bottom:10px; color:#1a73e8; }
-    .app-info p { font-size:0.9rem; color:#555; margin-bottom:10px; }
-    .app-info ul { list-style-type: disc; padding-left:20px; font-size:0.85rem; color:#333; margin-bottom:10px; }
+    .app-desc {
+      font-size: 0.99rem;
+      color: #4d6279;
+      margin-bottom: 0.4rem;
+      text-align: center;
+      font-weight: 500;
+      min-height: 42px;
+      padding: 0 0.5rem;
+    }
+    .app-features {
+      margin: 0.75em 0 1.1em 0;
+      padding-left: 1.2em;
+      font-size: 0.98em;
+      color: #4c6abb;
+      text-align: left;
+      align-self: start;
+    }
+    .app-features li {
+      margin-bottom: 0.32em;
+      list-style: disc inside;
+      font-size: 0.97em;
+    }
+    .premium-badge {
+      position: absolute;
+      right: 14px;
+      top: 20px;
+      background: linear-gradient(90deg, #ffd700 25%, #ffdb70 85%);
+      color: #484b55;
+      font-size: 0.81rem;
+      font-weight: bold;
+      padding: 3.5px 10px;
+      border-radius:9px;
+      box-shadow: 0 1px 9px 0 rgba(210,167,41,.19);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      letter-spacing: 0.1px;
+    }
+    .premium-badge i {
+      color: #f3d131;
+    }
     .download-btn {
-        text-align:center;
-        padding:10px 15px;
-        background: linear-gradient(90deg,#1a73e8,#4285f4);
-        color:#fff;
-        font-weight:500;
-        border-radius:50px;
-        text-decoration:none;
-        transition: all 0.3s;
+      background: linear-gradient(90deg,#517efd 32%, #32fac8 100%);
+      border: none;
+      color: #fff;
+      padding: 0.73em 1.69em 0.73em 1.44em;
+      font-weight: 600;
+      font-size: 1.04em;
+      border-radius: 20px;
+      margin-top: 0.35em;
+      letter-spacing: 0.02em;
+      outline: none;
+      cursor: pointer;
+      box-shadow: 0 2px 12px 0 rgba(95,197,207,0.08);
+      transition: background 0.17s, box-shadow 0.23s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
     }
-    .download-btn:hover { background: linear-gradient(90deg,#155ab6,#357ae8); }
-
-    /* Premium Badge */
-    .badge {
-        position:absolute;
-        top:10px;
-        right:10px;
-        background:#ffd700;
-        color:#000;
-        font-weight:bold;
-        padding:5px 10px;
-        border-radius:12px;
-        font-size:0.8rem;
-        box-shadow:0 2px 5px rgba(0,0,0,0.2);
+    .download-btn:active {
+      transform: scale(0.96);
     }
-
-    /* Responsive */
-    @media(max-width:768px) {
-        .search-bar input { width:200px; }
-        .carousel-slide { height:150px; }
+    .download-btn:hover {
+      background: linear-gradient(90deg,#327bfd 10%, #55ffe1 110%);
+      box-shadow: 0 5px 14px 0 rgba(68,168,208,0.14);
     }
 
-</style>
+    /* Responsive Design */
+    @media (max-width: 700px) {
+      .header { 
+        padding: 0 0.7rem; 
+        height: 62px;
+      }
+      .header-title {
+        font-size: 1.3rem;
+      }
+      .search-box {
+        width: 125px;
+        font-size: 0.95em;
+      }
+      .carousel-container {
+        min-height: 120px;
+        height: 125px;
+      }
+      .carousel-item {
+        height: 120px;
+      }
+      .carousel-caption {
+        font-size: 1em;
+        left: 1rem;
+        bottom: 0.7rem;
+      }
+      .apps-section {
+        padding: 0 0.2rem 2rem;
+      }
+      .apps-grid {
+        gap: 1.1rem;
+        margin-top: 1.1rem;
+      }
+      .app-card {
+        padding: 0.89rem 0.7rem 1rem;
+      }
+      .premium-badge {
+        font-size: 0.7em;
+        right: 8px;
+        top: 13px;
+      }
+      .download-btn {
+        font-size: 0.97em;
+        padding: 0.55em 1.2em 0.55em 1.05em;
+      }
+      .app-image {
+        width: 62px;
+        height: 62px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<header>
-    <h1>Clays App Store</h1>
-    <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Search apps...">
+  <!-- Header -->
+  <header class="header">
+    <span class="header-title">Clays App Store</span>
+    <div class="search-container">
+      <input type="text" class="search-box" id="searchBox" placeholder="Search apps… (name / ID)" autocomplete="off">
     </div>
-</header>
+  </header>
 
-<!-- Carousel -->
-<div class="carousel" id="carousel">
-    <div class="carousel-track">
-        <div class="carousel-slide">
-            <img src="https://via.placeholder.com/1200x200.png?text=Featured+App+Notify+Soul" alt="Featured App">
-        </div>
-        <div class="carousel-slide">
-            <img src="https://via.placeholder.com/1200x200.png?text=Premium+Features+Unlock" alt="Premium Features">
-        </div>
+  <!-- Carousel -->
+  <section class="carousel-container">
+    <div class="carousel-slider" id="carouselSlider">
+      <div class="carousel-item">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1000&q=80" style="width:100%; height:100%; border-radius:22px 22px 22px 22px;">
+        <div class="carousel-caption">Best Android Utility Apps Out Now</div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://images.unsplash.com/photo-1454023492550-5696f8ff10e1?auto=format&fit=crop&w=1000&q=80" style="width:100%; height:100%; border-radius:22px 22px 22px 22px;">
+        <div class="carousel-caption">Premium Features Free for a Limited Time!</div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1000&q=80" style="width:100%; height:100%; border-radius:22px 22px 22px 22px;">
+        <div class="carousel-caption">Try Notify Soul – the Notification Saver</div>
+      </div>
     </div>
-</div>
+    <div class="carousel-dots" id="carouselDots"></div>
+  </section>
 
-<!-- App Grid -->
-<div class="app-grid" id="appGrid">
-    <!-- Sample App -->
-    <div class="app-card" data-id="app001" data-name="Notify Soul">
-        <div style="position:relative;">
-            <img src="https://via.placeholder.com/300x150.png?text=Notify+Soul" alt="Notify Soul">
-            <div class="badge">Premium</div>
-        </div>
-        <div class="app-info">
-            <h3>Notify Soul</h3>
-            <p>📱 Notification Capture, 🗑️ Deleted Messages, 🎨 Modern UI, 💎 Premium Features unlockable via rewarded ads</p>
-            <ul>
-                <li>Unlimited History (remove 100 message limit)</li>
-                <li>Themes & Animations</li>
-                <li>Media Recovery</li>
-                <li>Backup & Restore</li>
-                <li>Secret Mode (PIN protection)</li>
-            </ul>
-            <a class="download-btn" href="apk/notify-soul.apk" download>Download</a>
-        </div>
+  <!-- App Store Section -->
+  <main class="apps-section">
+    <div class="apps-grid" id="appsGrid">
+      <!-- JS will populate apps here -->
     </div>
-</div>
+  </main>
 
-<script>
-    // Search functionality
-    const searchInput = document.getElementById('searchInput');
-    const appGrid = document.getElementById('appGrid');
-    const appCards = Array.from(appGrid.getElementsByClassName('app-card'));
+  <!-- Scripts -->
+  <script>
+    // Featured Carousel
+    const carouselSlider = document.getElementById('carouselSlider');
+    const carouselDots = document.getElementById('carouselDots');
+    const carouselItems = carouselSlider.children;
+    let carouselIndex = 0, carouselTimer;
 
-    searchInput.addEventListener('input', () => {
-        const query = searchInput.value.toLowerCase();
-        appCards.forEach(card => {
-            const name = card.getAttribute('data-name').toLowerCase();
-            const id = card.getAttribute('data-id').toLowerCase();
-            card.style.display = (name.includes(query) || id.includes(query)) ? 'flex' : 'none';
-        });
+    function updateCarousel() {
+      carouselSlider.style.transform = `translateX(-${carouselIndex * 100}%)`;
+      [...carouselDots.children].forEach((dot, i) => {
+        dot.classList.toggle('active', i === carouselIndex);
+      });
+    }
+
+    // Dots setup
+    for (let i = 0; i < carouselItems.length; i++) {
+      let dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i===0 ? ' active':'');
+      dot.addEventListener('click', ()=>{ carouselIndex = i; updateCarousel(); resetCarouselTimer(); })
+      carouselDots.appendChild(dot);
+    }
+
+    function nextCarousel() {
+      carouselIndex = (carouselIndex+1)%carouselItems.length;
+      updateCarousel();
+    }
+    function resetCarouselTimer() {
+      clearInterval(carouselTimer);
+      carouselTimer = setInterval(nextCarousel, 4200);
+    }
+    // Init
+    resetCarouselTimer();
+
+    // Hover pause
+    carouselSlider.addEventListener('mouseenter', ()=>clearInterval(carouselTimer));
+    carouselSlider.addEventListener('mouseleave', resetCarouselTimer);
+
+    // App Data (easy to add more apps)
+    const apps = [
+      {
+        id: "notify-soul",
+        name: "Notify Soul",
+        image: "https://raw.githubusercontent.com/jackiekazil/assets/master/icons/notify%20icon.png",
+        description: "📱 Notification Capture, 🗑️ Deleted Messages, 🎨 Modern UI, 💎 Premium Features unlockable via rewarded ads",
+        features: [
+          "Unlimited History (remove 100 message limit)",
+          "Themes & Animations",
+          "Media Recovery",
+          "Backup & Restore",
+          "Secret Mode (PIN protection)"
+        ],
+        premium: true,
+        download: "apk/notify-soul.apk"
+      },
+      // Add more app objects below following the format
+      // {
+      //   id: "example-id",
+      //   name: "App Name",
+      //   image: "image-url",
+      //   description: "Short desc",
+      //   features: [ ... ],
+      //   premium: false,
+      //   download: "apk/example.apk"
+      // }
+    ];
+
+    // Render Apps
+    function renderApps(filter="") {
+      const grid = document.getElementById('appsGrid');
+      grid.innerHTML = "";
+      let filteredApps = apps.filter(app =>
+        app.name.toLowerCase().includes(filter)
+        || app.id.toLowerCase().includes(filter)
+      );
+      if (!filteredApps.length) {
+        grid.innerHTML = `<div style="font-size:1.06em;color:#869">No apps match your search.</div>`;
+        return;
+      }
+      filteredApps.forEach(app => {
+        // Features list HTML
+        let featuresHTML = app.features.map(f=>`<li>${f}</li>`).join('');
+        // Premium badge
+        let premiumHTML = app.premium
+           ? `<span class="premium-badge"><i>💎</i> Premium</span>` : '';
+        // Card HTML
+        let cardHTML = `
+          <div class="app-card" tabindex="0">
+            <img src="${app.image}" alt="${app.name}" class="app-image" />
+            <div class="app-name">${app.name}</div>
+            <div class="app-desc">${app.description}</div>
+            <ul class="app-features">${featuresHTML}</ul>
+            <a class="download-btn" href="${app.download}" download>
+              Download APK
+            </a>
+            ${premiumHTML}
+          </div>
+        `;
+        let wrapper = document.createElement('div');
+        wrapper.innerHTML = cardHTML;
+        grid.appendChild(wrapper.firstElementChild);
+      });
+    }
+
+    // Initial render
+    renderApps();
+
+    // Dynamic search filtering
+    document.getElementById('searchBox').addEventListener('input', function() {
+      renderApps(this.value.trim().toLowerCase());
     });
 
-    // Simple carousel
-    const track = document.querySelector('.carousel-track');
-    let index = 0;
-    setInterval(() => {
-        index = (index + 1) % track.children.length;
-        track.style.transform = `translateX(-${index * 100}%)`;
-    }, 4000);
-
-</script>
-
+    // Handle keyboard accessibility for search and cards
+    document.addEventListener('keydown', function(e){
+      // On Enter in search box, focus first result
+      if(e.target.id==='searchBox' && e.key==='Enter') {
+        let firstCard = document.querySelector('.app-card');
+        if(firstCard) firstCard.focus();
+      }
+    });
+  </script>
 </body>
 </html>
