@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Bypass Screenshot Restriction (FLAG_SECURE) — Full Deep Technical Guide 2025</title>
+
+  <!-- SEO -->
+  <meta name="description" content="A complete technical guide on bypassing screenshot restriction in Android apps using FLAG_SECURE. Learn how Sauce Labs Live & automated testing behaves, limitations, workarounds, and how to enable Bypass Screenshot Restriction.">
+  <meta name="keywords" content="FLAG_SECURE bypass, Android screenshot restriction, Sauce Labs, bypass screenshot restriction, CVE style security, Android live testing, mobile security testing, secure screens black screen">
+  <meta name="author" content="Clay Security">
+
+  <style>
+    body{
+      font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.7;
+      color:#111;
+      background:#f7f9fb;
+      padding:24px;
+    }
+    .wrap{
+      max-width:900px;
+      margin:0 auto;
+      background:white;
+      padding:30px;
+      border-radius:12px;
+      box-shadow:0 8px 30px rgba(20,30,60,0.08);
+    }
+    h1,h2,h3{
+      color:#0b3b6f;
+      margin-top:28px;
+    }
+    pre{
+      background:#0f1724;
+      color:#e6eef8;
+      padding:16px;
+      border-radius:8px;
+      overflow:auto;
+    }
+    code{
+      font-family:Menlo,Monaco,Consolas,"Courier New",monospace;
+    }
+    .callout{
+      background:#f1f8ff;
+      border-left:4px solid #2b6cb0;
+      padding:14px;
+      border-radius:6px;
+      margin:14px 0;
+    }
+    .meta{
+      color:#475569;
+      font-size:0.95rem;
+      margin-bottom:20px;
+    }
+    ul,ol{
+      margin-left:1.3rem;
+    }
+    .section-divider{
+      height:1px;
+      background:#e2e8f0;
+      margin:32px 0;
+    }
+    .btn{
+      display:inline-block;
+      background:#0b63c6;
+      color:white;
+      padding:10px 16px;
+      border-radius:8px;
+      text-decoration:none;
+      margin-top:12px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+<h1>Bypass Screenshot Restriction (FLAG_SECURE) — Deep Technical Guide 2025</h1>
+
+<p class="meta">
+  A complete guide for engineers & mobile security testers on how to handle 
+  <strong>Android's FLAG_SECURE screenshot restriction</strong> when testing apps on 
+  cloud device platforms like Sauce Labs. This article covers how FLAG_SECURE works, why black screens appear,
+  what limitations exist, and how to safely enable “Bypass Screenshot Restriction”.
+</p>
+
+<div class="callout">
+  <strong>Important:</strong> FLAG_SECURE is a legitimate Android security mechanism. 
+  This guide explains how to test affected apps safely — not how to break platform protections.
+</div>
+
+<h2>⚠️ What Causes Black Screens During Testing?</h2>
+
+<p>When testing an Android app on a cloud device provider like Sauce Labs, you may see a 
+completely <strong>black screen</strong> during:</p>
+
+<ul>
+  <li>Live testing sessions</li>
+  <li>Video recordings</li>
+  <li>Screenshots</li>
+</ul>
+
+<p>This occurs because the developer has enabled:</p>
+
+<pre><code>window.setFlags(WindowManager.LayoutParams.FLAG_SECURE,
+                WindowManager.LayoutParams.FLAG_SECURE);</code></pre>
+
+<p>
+This prevents screenshots, screen recording, and streaming for security-sensitive content.
+Cloud platforms stream the device’s screen — if FLAG_SECURE is active, Android blocks the stream.
+</p>
+
+<div class="section-divider"></div>
+
+<h2>🔐 What Is FLAG_SECURE?</h2>
+
+<p><strong>FLAG_SECURE</strong> tells Android to block all forms of visual capture, including:</p>
+
+<ul>
+  <li>Screenshots</li>
+  <li>Screen recordings</li>
+  <li>Live streaming from cloud devices</li>
+  <li>Overview/Recents screen preview</li>
+</ul>
+
+<p>Apps commonly use it for:</p>
+
+<ul>
+  <li>Banking & payment screens</li>
+  <li>Authentication/PIN pages</li>
+  <li>KYC / Aadhaar verification</li>
+  <li>Enterprise or confidential apps</li>
+</ul>
+
+<div class="section-divider"></div>
+
+<h2>🧪 How Sauce Labs Handles FLAG_SECURE</h2>
+
+<p>Sauce Labs provides a setting called <strong>Bypass Screenshot Restriction</strong> that can 
+sometimes allow visual output on FLAG_SECURE screens.</p>
+
+<h3>📌 Behavior by Test Type</h3>
+
+<ul>
+  <li><strong>Live Testing:</strong> You cannot interact with secure screens; they remain black.</li>
+  <li><strong>Automated Tests:</strong> Test runs normally, but video segments containing FLAG_SECURE screens are black.</li>
+</ul>
+
+<div class="callout">
+  <strong>Note:</strong> This feature only works when you 
+  <strong>own the app</strong> and upload it to Sauce Labs storage.
+</div>
+
+<div class="section-divider"></div>
+
+<h2>🚫 Limitations — When Bypass Screenshot Restriction Cannot Work</h2>
+
+<p>Even with the setting enabled, bypassing screenshot restrictions is impossible when:</p>
+
+<ul>
+  <li>You interact with <strong>third-party apps</strong> (Google Pay, PhonePe, Paytm, banking).</li>
+  <li>Your app is built using another vendor's secured SDK.</li>
+  <li>Testing involves sensitive, protected system UI.</li>
+  <li>Legacy app storage is used in Sauce Labs.</li>
+</ul>
+
+<p>FLAG_SECURE is enforced by Android at the OS level, so cloud testing platforms cannot override it.</p>
+
+<div class="section-divider"></div>
+
+<h2>🛠️ Workarounds That Actually Work</h2>
+
+<h3>✔️ 1. Ask Your Developers for a Special QA Build</h3>
+<p>This is the <strong>best and cleanest</strong> solution. The dev team removes or disables 
+FLAG_SECURE only in QA builds.</p>
+
+<h3>✔️ 2. Use Sauce Labs “Bypass Screenshot Restriction”</h3>
+<p>Works <strong>only</strong> when:</p>
+<ul>
+  <li>You own the app</li>
+  <li>You upload it to app storage</li>
+  <li>No third-party FLAG_SECURE screens are involved</li>
+</ul>
+
+<h3>✔️ 3. Do Sensitive Flow Testing on Physical Devices</h3>
+
+<h3>✔️ 4. Test third-party interactions via web or API</h3>
+
+<div class="section-divider"></div>
+
+<h2>⚙️ How to Enable Bypass Screenshot Restriction in Sauce Labs</h2>
+
+<p>Follow these steps to enable it:</p>
+
+<ol>
+  <li>Go to <strong>App Management</strong>.</li>
+  <li>Hover over your app → click <strong>Settings & App Versions</strong>.</li>
+  <li>Open <strong>Settings → App Settings → Instrumentation</strong>.</li>
+  <li>Enable <strong>Bypass Screenshot Restriction</strong>.</li>
+  <li>Return to App Management and run the test.</li>
+</ol>
+
+<div class="callout">
+  ⚠️ This works only when the app belongs to your organization and is uploaded to Sauce Labs Storage.
+</div>
+
+<div class="section-divider"></div>
+
+<h2>🎯 How to Interpret Results</h2>
+
+<ul>
+  <li><strong>Expected:</strong> Sensitive screens still appear black.</li>
+  <li><strong>Expected:</strong> Owned app screens may appear normally.</li>
+  <li><strong>Expected:</strong> Third-party payment flows remain black.</li>
+</ul>
+
+<h3>❌ Unexpected (indicates misconfiguration)</h3>
+<ul>
+  <li>Secure screens showing up clearly during streaming</li>
+  <li>Third-party payment screens visually appearing</li>
+</ul>
+
+<div class="callout">
+  <strong>If that happens, your app may be deploying an insecure configuration.</strong>
+</div>
+
+<div class="section-divider"></div>
+
+<h2>📝 Final Recommendations</h2>
+
+<ul>
+  <li>Create a QA build without FLAG_SECURE.</li>
+  <li>Use device-specific whitelisting for sensitive pages.</li>
+  <li>Avoid external app interactions in cloud device testing.</li>
+  <li>Use the Bypass Screenshot Restriction only for internal screens.</li>
+</ul>
+
+<p class="meta">
+  Prepared for: Mobile Security & QA Engineering Teams  
+  — Comprehensive guidance for safe and compliant testing.
+</p>
+
+<a href="#" class="btn">Need a full version with animations + dark mode?</a>
+
+</div>
+
+<script>
+// Optional small JS improvements (smooth scroll)
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener("click",function(e){
+    e.preventDefault();
+    document.querySelector(this.getAttribute("href")).scrollIntoView({behavior:"smooth"});
+  });
+});
+</script>
+
+</body>
+</html>
