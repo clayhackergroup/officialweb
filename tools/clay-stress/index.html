@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clay Stress Testing Advanced</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0d0d0d;
+      color: #e6e6e6;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(90deg, #4d00ff, #9900ff);
+      padding: 40px 20px;
+      text-align: center;
+      color: white;
+    }
+    header h1 {
+      font-size: 42px;
+      margin: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+    h2 {
+      color: #b366ff;
+      margin-top: 40px;
+      font-size: 28px;
+    }
+    pre {
+      background: #1a1a1a;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+      border: 1px solid #333;
+    }
+    code { color: #00e6e6; }
+    .section {
+      margin-bottom: 40px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #888;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Clay Stress Testing Advanced</h1>
+    <p>A modern high‑performance HTTP load testing tool</p>
+  </header>  <div class="container"><div class="section">
+  <h2>⚡ Overview</h2>
+  <p>
+    Clay Stress Testing Advanced is a multi‑threaded web load-testing utility designed to help you analyze how a server behaves under heavy traffic. It provides real-time statistics, request monitoring, and exportable logs — all through a fast, colorful command-line interface.
+  </p>
+</div>
+
+<div class="section">
+  <h2>🚀 Features</h2>
+  <ul>
+    <li>High-speed threaded request engine</li>
+    <li>Real-time performance metrics</li>
+    <li>Custom headers, cookies, payload</li>
+    <li>GET/POST support</li>
+    <li>Proxy mode</li>
+    <li>Exportable success/error logs</li>
+    <li>Works on Linux, Termux, Windows</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>📦 Installation (via wget)</h2>
+  <h3>Linux / Termux</h3>
+  <pre><code>pkg update -y
+
+pkg install python wget -y pip install requests colorama
+
+wget https://claytechgroup.netlify.app/tools/clay-stress/run.py -O run.py python run.py</code></pre>
+
+<h3>Windows PowerShell</h3>
+  <pre><code>pip install requests colorama
+
+wget https://claytechgroup.netlify.app/tools/clay-stress/run.py -OutFile run.py python run.py</code></pre>
+
+<h3>Windows CMD (curl)</h3>
+  <pre><code>curl -o run.py https://claytechgroup.netlify.app/tools/clay-stress/run.py
+
+python run.py</code></pre> </div>
+
+<div class="section">
+  <h2>🛠 Usage</h2>
+  <p>Run the tool:</p>
+  <pre><code>python run.py</code></pre>
+  <p>Then enter:</p>
+  <ul>
+    <li>Target URL</li>
+    <li>Request method</li>
+    <li>Thread count</li>
+    <li>Mode (quick/slow)</li>
+    <li>Optional proxy</li>
+    <li>Custom data</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>📊 Example Output</h2>
+  <pre><code>Time: 12s
+
+Requests: 12,500 Success: 12,132 Errors: 368 RPS: 1040 Threads: 50</code></pre> </div>
+
+<div class="section">
+  <h2>🔐 Legal Notice</h2>
+  <p>
+    This tool is intended exclusively for ethical, authorized server testing. Do not use this software on systems you do not own or control.
+  </p>
+</div>
+
+<footer>
+  © Clay Hacker Group — Advanced Load Testing Tool
+</footer>
+
+  </div>
+</body>
+</html>
